@@ -91,7 +91,7 @@ a { color: var(--verdigris); text-underline-offset: 2px; }
 .facts li::before { content: ""; position: absolute; left: 0; top: .62em; width: 12px; height: 2px; background: var(--bronze); }
 .facts li::after { content: ""; position: absolute; left: 10px; top: calc(.62em - 2px); width: 6px; height: 6px; border-radius: 50%; background: var(--bronze); }
 
-.principles { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); gap: 40px; margin-top: 28px; }
+.principles { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 230px), 1fr)); gap: 40px; margin-top: 28px; }
 .principle { position: relative; padding-top: 28px; border-top: 2px solid var(--bronze); }
 .principle .joint { position: absolute; top: -7px; left: 0; width: 12px; height: 12px; border-radius: 50%; background: var(--surface); border: 2px solid var(--bronze); }
 .principle h3 { font-family: var(--font-display); font-weight: 500; font-size: 24px; line-height: 1.25; }
