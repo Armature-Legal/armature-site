@@ -28,7 +28,20 @@
   <nav aria-label="Main">
     <a href="#products">Products</a>
     <a href="#approach">Approach</a>
-    <a href="https://app.armaturelegal.com" title="For invited alpha users">Sign in</a>
+    <details class="signin">
+      <summary>Sign in</summary>
+      <div class="signin-menu">
+        <p class="eyebrow">Alpha, for invited users</p>
+        <a href="https://core.armaturelegal.com">
+          <strong>Case Management</strong>
+          <span>Cases, calendar, evidence and dashboards</span>
+        </a>
+        <a href="https://app.armaturelegal.com">
+          <strong>Jury Instructions</strong>
+          <span>Build and export jury instruction sets</span>
+        </a>
+      </div>
+    </details>
     <a class="button small" href="#contact">Request a demo</a>
   </nav>
 </header>
@@ -153,6 +166,15 @@
   <span class="foot-wire" aria-hidden="true"></span>
   <span>The structure a case is built on.</span>
 </footer>
+
+<script>
+  // Close the Sign in menu on a click outside it or on Escape.
+  (function () {
+    var menu = document.querySelector(".signin");
+    document.addEventListener("click", function (e) { if (menu.open && !menu.contains(e.target)) menu.open = false; });
+    document.addEventListener("keydown", function (e) { if (e.key === "Escape" && menu.open) { menu.open = false; menu.querySelector("summary").focus(); } });
+  })();
+</script>
 
 </body>
 </html>
