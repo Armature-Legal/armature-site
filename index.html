@@ -4,185 +4,351 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Armature · The structure a case is built on</title>
-  <meta name="description" content="Case management, evidence and trial presentation, and court documents for criminal trial lawyers. Use the whole suite or one module.">
-  <meta name="theme-color" content="#14181f">
+  <meta name="description" content="Case management, evidence and trial presentation, and court documents for criminal trial lawyers. Use the whole suite, or start with one module.">
+  <meta name="theme-color" content="#0E0D0C">
   <link rel="canonical" href="https://www.armaturelegal.com/">
   <meta property="og:title" content="Armature">
-  <meta property="og:description" content="The structure a case is built on. Case management, evidence and trial presentation, and court documents for criminal trial lawyers. Use the whole suite or one module.">
+  <meta property="og:description" content="The structure a case is built on. Case management, evidence and trial presentation, and court documents for criminal trial lawyers. Use the whole suite, or start with one module.">
   <meta property="og:url" content="https://www.armaturelegal.com/">
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
-  <link rel="preload" href="fonts/spectral-latin-500-normal.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="styles.css?v=2026-10-27">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600&amp;family=Geist+Mono:wght@400;500&amp;family=Instrument+Serif:ital@0;1&amp;display=swap">
+<style>
+body{margin:0;background:#0E0D0C}
+a{color:#ECE7DF}a:hover{color:#C8A46E}
+.ar *{box-sizing:border-box}
+.ar a{text-decoration:none}
+.ease{transition:transform .5s cubic-bezier(.16,1,.3,1),background-color .3s cubic-bezier(.16,1,.3,1),color .3s cubic-bezier(.16,1,.3,1),border-color .3s cubic-bezier(.16,1,.3,1)}
+.btn:hover{transform:translateY(-2px)}
+.btn:active{transform:translateY(1px) scale(.98)}
+.ghost:hover{border-color:rgba(236,231,223,.4)}
+@keyframes breathe{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.9);opacity:0}}
+@keyframes rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+@keyframes draw{from{stroke-dashoffset:1400}to{stroke-dashoffset:0}}
+@keyframes fadein{from{opacity:0}to{opacity:1}}
+@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@keyframes playhead{from{transform:translateX(0)}to{transform:translateX(560%)}}
+@keyframes sweep{0%{transform:scaleX(0)}35%,80%{transform:scaleX(1)}100%{transform:scaleX(1);opacity:0}}
+@keyframes floatin{0%,30%{opacity:0;transform:translateY(10px)}42%,88%{opacity:1;transform:none}100%{opacity:0;transform:translateY(-4px)}}
+@keyframes drift{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+.pulse{position:relative}
+.pulse::after{content:"";position:absolute;inset:0;border-radius:50%;background:inherit;animation:breathe 2.4s cubic-bezier(.16,1,.3,1) infinite}
+.rise{opacity:0;animation:rise 1s cubic-bezier(.16,1,.3,1) forwards;animation-delay:calc(var(--i) * 110ms)}
+.draw{stroke-dasharray:1400;stroke-dashoffset:1400;animation:draw 2.6s cubic-bezier(.16,1,.3,1) .3s forwards}
+.node{opacity:0;animation:fadein .8s ease forwards;animation-delay:calc(1s + var(--i) * 160ms)}
+.track{animation:marquee 46s linear infinite}
+.head{animation:playhead 7s linear infinite}
+.hl{position:relative;color:#ECE7DF}
+.hl::before{content:"";position:absolute;left:-2px;right:-2px;top:2px;bottom:0;background:var(--accent);opacity:.22;transform-origin:left;transform:scaleX(0);animation:sweep 6s cubic-bezier(.16,1,.3,1) infinite}
+.tool{animation:floatin 6s cubic-bezier(.16,1,.3,1) infinite}
+.drift{animation:drift 6s ease-in-out infinite}
+.still *,.still *::before,.still *::after{animation:none!important;opacity:1;stroke-dashoffset:0}
+@media (prefers-reduced-motion: reduce){.ar *,.ar *::before,.ar *::after{animation:none!important;opacity:1;stroke-dashoffset:0}}
+</style>
+<style>html{scroll-behavior:smooth}#modules,#approach,#signin,#contact{scroll-margin-top:84px}</style>
 </head>
 <body>
+<div class="ar " style="--accent: #C8A46E; background: #0E0D0C; color: #ECE7DF; font-family: 'Geist', ui-sans-serif, system-ui, sans-serif; font-weight: 400; overflow: hidden; -webkit-font-smoothing: antialiased">
 
-<header class="nav">
-  <a class="lockup" href="./" aria-label="Armature, home">
-    <svg class="mark" viewBox="0 0 100 100" fill="none" aria-hidden="true" focusable="false">
-      <path d="M14 86 L50 14 L86 86" stroke="#14181f" stroke-width="8" stroke-linejoin="round" stroke-linecap="round"/>
-      <path d="M32 60 H68" stroke="#a8743a" stroke-width="8" stroke-linecap="round"/>
-      <circle cx="50" cy="14" r="6" fill="#f2f3f1" stroke="#14181f" stroke-width="4"/>
-    </svg>
-    <span class="wordmark">ARMATURE</span>
-  </a>
-  <nav aria-label="Main">
-    <a href="#products">Products</a>
-    <a href="#approach">Approach</a>
-    <details class="signin">
-      <summary>Sign in</summary>
-      <div class="signin-menu">
-        <p class="eyebrow">Alpha, for invited users</p>
-        <a href="https://core.armaturelegal.com">
-          <strong>Armature Legal Suite Alpha Trial</strong>
-          <span>Cases, evidence and court documents, one sign-in</span>
-        </a>
-        <a href="https://app.armaturelegal.com">
-          <strong>Armature Jury Instructions</strong>
-          <span>The standalone jury instruction builder</span>
-        </a>
-      </div>
-    </details>
-    <a class="button small" href="#contact">Request a demo</a>
-  </nav>
+<!-- Nav -->
+<header style="position: sticky; top: 0; z-index: 20; background: rgba(14,13,12,.78); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border-bottom: 1px solid rgba(236,231,223,.08); box-shadow: inset 0 -1px 0 rgba(255,255,255,.03)">
+<div style="max-width: 1400px; margin: 0 auto; padding: 18px clamp(16px, 4vw, 56px); display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px">
+<a href="#top" aria-label="Armature, home" style="display: flex; align-items: center; gap: 12px; color: #ECE7DF">
+<svg width="26" height="26" viewBox="0 0 100 100" fill="none" aria-hidden="true"><path d="M16 86 L50 14 L84 86" stroke="#ECE7DF" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"></path><path d="M31 60 H69" stroke="var(--accent)" stroke-width="6" stroke-linecap="round"></path><circle cx="50" cy="14" r="7" fill="#0E0D0C" stroke="#ECE7DF" stroke-width="5"></circle></svg>
+<span style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: 14px; letter-spacing: .32em">ARMATURE</span>
+</a>
+<nav aria-label="Main" style="display: flex; flex-wrap: wrap; align-items: center; gap: 28px; font-size: 14px">
+<a href="#modules" style="color: #A39C91">Modules</a>
+<a href="#approach" style="color: #A39C91">Approach</a>
+<a href="#signin" style="color: #A39C91">Sign in</a>
+<a class="btn ease" href="#contact" style="display: inline-flex; align-items: center; min-height: 44px; padding: 0 20px; border-radius: 999px; background: #ECE7DF; color: #0E0D0C; font-weight: 500">Request a demo</a>
+</nav>
+</div>
 </header>
 
-<main>
-  <!-- Hero: the design-system cover. Name and tagline on the ground; color blocks and the bronze wire on the right. -->
-  <section class="hero">
-    <div class="hero-text">
-      <h1>Armature</h1>
-      <p class="tagline">The structure a case is built on.</p>
-      <p class="lede">Case management, evidence and trial presentation, and court documents for criminal trial lawyers. Use the whole suite, or start with one module.</p>
-      <div class="actions">
-        <a class="button" href="#contact">Request a demo</a>
-        <a class="button ghost" href="#products">See the products</a>
-      </div>
-    </div>
-    <div class="hero-art" aria-hidden="true">
-      <svg viewBox="0 0 480 336" preserveAspectRatio="xMinYMid slice" focusable="false">
-        <rect class="ink" x="144" y="0" width="360" height="336" rx="6"/>
-        <rect class="graphite" x="0" y="0" width="128" height="192" rx="6"/>
-        <rect class="bronze" x="0" y="208" width="128" height="128" rx="6"/>
-        <rect class="verdigris" x="288" y="208" width="216" height="128" rx="6"/>
-        <path class="wire" d="M32 80 H384"/>
-        <path class="wire" d="M176 128 H336"/>
-        <path class="wire" d="M32 176 H112"/>
-        <circle class="open" cx="32" cy="80" r="7"/>
-        <circle class="node" cx="384" cy="80" r="6"/>
-        <circle class="node" cx="176" cy="128" r="6"/>
-        <circle class="node" cx="336" cy="128" r="6"/>
-        <circle class="node" cx="32" cy="176" r="6"/>
-        <circle class="node" cx="112" cy="176" r="6"/>
-      </svg>
-    </div>
-  </section>
+<!-- Hero -->
+<section id="top" style="max-width: 1400px; margin: 0 auto; padding: clamp(56px, 8vw, 120px) clamp(16px, 4vw, 56px) clamp(56px, 7vw, 104px); display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 480px), 1fr)); gap: clamp(40px, 6vw, 96px); align-items: center; min-height: 860px">
+<div style="display: flex; flex-direction: column; gap: 28px; max-width: 620px">
+<p class="rise" style="--i: 0; margin: 0; display: inline-flex; align-items: center; gap: 12px; font-family: 'Geist Mono', ui-monospace, monospace; font-size: 12px; letter-spacing: .18em; text-transform: uppercase; color: #A39C91">
+<span class="pulse" style="width: 7px; height: 7px; border-radius: 50%; background: var(--accent); display: inline-block"></span>Invitation-only alpha
+</p>
+<h1 class="rise" style="--i: 1; margin: 0; font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: clamp(48px, 6.2vw, 92px); line-height: .98; letter-spacing: -.02em">The structure a case is <em style="color: var(--accent)">built on.</em></h1>
+<p class="rise" style="--i: 2; margin: 0; font-size: 18px; line-height: 1.65; color: #A39C91; max-width: 52ch">Case management, evidence and trial presentation, and court documents for criminal trial lawyers. Use the whole suite, or start with one module.</p>
+<div class="rise" style="--i: 3; display: flex; flex-wrap: wrap; gap: 12px; margin-top: 8px">
+<a class="btn ease" href="#contact" style="display: inline-flex; align-items: center; gap: 10px; min-height: 52px; padding: 0 26px; border-radius: 999px; background: var(--accent); color: #0E0D0C; font-weight: 500; font-size: 15px">Request a demo
+<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
+<a class="btn ghost ease" href="#modules" style="display: inline-flex; align-items: center; min-height: 52px; padding: 0 26px; border-radius: 999px; border: 1px solid rgba(236,231,223,.18); color: #ECE7DF; font-size: 15px">See the modules</a>
+</div>
+</div>
 
-  <section id="products" class="band">
-    <p class="eyebrow">The suite</p>
-    <h2>One foundation for the whole case.</h2>
-    <p class="band-lede">Separate modules built on the same file: case management, document drafting and management, and evidence and jury preparation and presentation. Use them as one suite, or standalone tools alongside the systems you already use.</p>
-    <div class="cards">
-      <article class="card">
-        <p class="eyebrow">Case Management</p>
-        <h3>From the first call to the courtroom.</h3>
-        <p>Intake, the case file and the court calendar in one place, with each person's work laid out by priority.</p>
-        <ul class="facts">
-          <li>Tasks for every role, ranked now, this week and later</li>
-          <li>Alerts for what can't wait, like a new arrest on a pending case</li>
-          <li>Court dates checked against the clerk's record</li>
-          <li>Discovery tracked from request to tender or receipt</li>
-        </ul>
-      </article>
-      <article class="card">
-        <p class="eyebrow">Evidence and Presentation</p>
-        <h3>Prepare the evidence. Show it in court.</h3>
-        <p>Open the case's evidence from your digital evidence platform, build the trial file, and present it from the same app.</p>
-        <ul class="facts">
-          <li>Clip video, redact documents and add Bates numbers</li>
-          <li>Map and timeline, with video and transcripts in sync</li>
-          <li>Present to the jury on its own screen, then export a verified jury package</li>
-          <li>Exhibits side by side, with callouts and markings</li>
-        </ul>
-      </article>
-      <article class="card">
-        <p class="eyebrow">Document Builder</p>
-        <h3>Court documents built from the case.</h3>
-        <p>Charges, jury instructions, motions, orders and subpoenas, drafted from the case and checked against the official text.</p>
-        <ul class="facts">
-          <li>Counts checked against the full statute, with lesser included offenses</li>
-          <li>Jury instructions suggested from the facts and the trial record</li>
-          <li>Every case cited is checked, linked and watched</li>
-          <li>Your office's clauses, signature blocks and defaults</li>
-        </ul>
-      </article>
-    </div>
-    <div class="modes">
-      <div class="mode">
-        <h3>As a suite</h3>
-        <p>One sign-in and one case. Cite an exhibit in a draft, and a filed document's status lands back on the case file.</p>
-      </div>
-      <div class="mode">
-        <h3>As a module</h3>
-        <p>Each module connects to your evidence platform and court records on its own. Jury Instructions is also available by itself.</p>
-      </div>
-    </div>
-  </section>
+<!-- Hero art: the frame, drawn, with the parts of a case on its joints -->
+<div aria-hidden="true" style="position: relative; width: 100%; aspect-ratio: 8 / 7; border-radius: 28px; border: 1px solid rgba(236,231,223,.08); background: radial-gradient(120% 90% at 70% 20%, #1D1B18 0%, #121110 55%, #0E0D0C 100%); box-shadow: inset 0 1px 0 rgba(255,255,255,.05), 0 40px 80px -40px rgba(0,0,0,.6); overflow: hidden">
+<svg viewBox="0 0 640 560" width="100%" height="100%" fill="none" style="display: block">
+<g stroke="rgba(236,231,223,.05)" stroke-width="1">
+<path d="M0 140H640M0 280H640M0 420H640M160 0V560M320 0V560M480 0V560"></path>
+</g>
+<path id="frameA" class="draw" d="M130 492 L320 70 L510 492" stroke="#ECE7DF" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"></path>
+<path class="draw" d="M206 324 H434" stroke="var(--accent)" stroke-width="2.5" stroke-linecap="round" style="animation-delay: .9s"></path>
+<g stroke="rgba(236,231,223,.22)" stroke-width="1" stroke-dasharray="3 5">
+<path d="M320 70 V32 H404"></path>
+<path d="M253 220 H176 V176"></path>
+<path d="M206 324 H96"></path>
+<path d="M434 324 H548"></path>
+<path d="M466 394 V430 H560"></path>
+<path d="M130 492 V524 H64"></path>
+<path d="M510 492 V524 H584"></path>
+</g>
+<circle class="node" style="--i: 0" cx="320" cy="70" r="8" fill="#0E0D0C" stroke="#ECE7DF" stroke-width="2"></circle>
+<circle class="node" style="--i: 1" cx="253" cy="220" r="5" fill="#ECE7DF"></circle>
+<circle class="node" style="--i: 2" cx="206" cy="324" r="5" fill="var(--accent)"></circle>
+<circle class="node" style="--i: 3" cx="434" cy="324" r="5" fill="var(--accent)"></circle>
+<circle class="node" style="--i: 4" cx="466" cy="394" r="5" fill="#ECE7DF"></circle>
+<circle class="node" style="--i: 5" cx="130" cy="492" r="5" fill="#ECE7DF"></circle>
+<circle class="node" style="--i: 6" cx="510" cy="492" r="5" fill="#ECE7DF"></circle>
+<g font-family="Geist Mono, monospace" font-size="11" letter-spacing="1.4" fill="#A39C91">
+<text class="node" style="--i: 0" x="412" y="36">INTAKE</text>
+<text class="node" style="--i: 1" x="160" y="166">COUNT II</text>
+<text class="node" style="--i: 2" x="40" y="314">EXHIBIT 14</text>
+<text class="node" style="--i: 3" x="470" y="314">INSTRUCTION</text>
+<text class="node" style="--i: 4" x="474" y="420">WITNESSES</text>
+<text class="node" style="--i: 5" x="40" y="514">DISCOVERY</text>
+<text class="node" style="--i: 6" x="520" y="514">VERDICT</text>
+</g>
+<circle r="4" fill="var(--accent)">
+<animateMotion dur="9s" repeatCount="indefinite" rotate="auto"><mpath href="#frameA"></mpath></animateMotion>
+</circle>
+</svg>
+<div class="drift" style="position: absolute; left: 24px; bottom: 24px; display: flex; align-items: center; gap: 10px; padding: 10px 14px; border-radius: 14px; background: rgba(26,25,22,.72); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,.08); box-shadow: inset 0 1px 0 rgba(255,255,255,.08); font-family: 'Geist Mono', ui-monospace, monospace; font-size: 11px; letter-spacing: .08em; color: #A39C91">
+<span class="pulse" style="width: 6px; height: 6px; border-radius: 50%; background: var(--accent); display: inline-block"></span>26 CR 04417 · LINKED ACROSS 3 MODULES
+</div>
+</div>
+</section>
 
-  <section id="approach" class="band approach">
-    <p class="eyebrow">Approach</p>
-    <div class="principles">
-      <div class="principle">
-        <span class="joint" aria-hidden="true"></span>
-        <h3>The case, connected.</h3>
-        <p>Calls, charges, exhibits and decisions link to each other, so nothing is re-entered or reconstructed from memory.</p>
-      </div>
-      <div class="principle">
-        <span class="joint" aria-hidden="true"></span>
-        <h3>Work that holds up in court.</h3>
-        <p>Charges come from the statutes and instructions from the official text, with every change on the record.</p>
-      </div>
-      <div class="principle">
-        <span class="joint" aria-hidden="true"></span>
-        <h3>AI drafts. Lawyers decide.</h3>
-        <p>Every suggestion shows its source, and nothing reaches the court without review.</p>
-      </div>
-      <div class="principle">
-        <span class="joint" aria-hidden="true"></span>
-        <h3>Secure and on the record.</h3>
-        <p>Two-step sign-in, an audit trail on every action, and evidence verified when it leaves.</p>
-      </div>
-      <div class="principle">
-        <span class="joint" aria-hidden="true"></span>
-        <h3>Prepared is a structure, not a feeling.</h3>
-        <p>Clear steps from intake to trial, so a case moves through the system without losing its shape.</p>
-      </div>
-    </div>
-  </section>
+<!-- Crossbar between hero and modules: the A's bar, with its joints -->
+<div aria-hidden="true" style="max-width: 1400px; margin: 0 auto; padding: 0 clamp(16px, 4vw, 56px)">
+<div style="display: flex; align-items: center">
+<span style="flex: none; width: 10px; height: 10px; border-radius: 50%; background: var(--accent)"></span>
+<span style="flex: 1; height: 2.5px; border-radius: 2px; background: var(--accent)"></span>
+<span style="flex: none; width: 10px; height: 10px; border-radius: 50%; background: var(--accent)"></span>
+</div>
+</div>
 
-  <section id="contact" class="contact">
-    <div>
-      <p class="eyebrow on-dark">Contact</p>
-      <h2>Built by a trial lawyer, for trial lawyers.</h2>
-      <p>See Armature with your own workflow. We'll set up a short demo for your office or firm. Armature is in an invitation-only alpha.</p>
-    </div>
-    <a class="button light" href="mailto:info@armaturelegal.com?subject=Armature%20demo">Email info@armaturelegal.com</a>
-  </section>
-</main>
+<!-- Modules -->
+<section id="modules" style="max-width: 1400px; margin: 0 auto; padding: clamp(80px, 10vw, 160px) clamp(16px, 4vw, 56px) 40px">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr)); gap: 32px 96px; align-items: end">
+<div style="display: flex; flex-direction: column; gap: 20px">
+<p style="margin: 0; font-family: 'Geist Mono', ui-monospace, monospace; font-size: 12px; letter-spacing: .18em; text-transform: uppercase; color: var(--accent)">The suite</p>
+<h2 style="margin: 0; font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: clamp(40px, 4.6vw, 68px); line-height: 1; letter-spacing: -.02em">One foundation for the whole case.</h2>
+</div>
+<p style="margin: 0; font-size: 17px; line-height: 1.7; color: #A39C91; max-width: 58ch">Separate modules built on the same file: case management, document drafting and management, evidence and jury preparation and presentation. Use them as one suite, or standalone tools alongside the systems you already use.</p>
+</div>
 
-<footer class="foot">
-  <span>© 2026 Armature Legal Technology, Inc.</span>
-  <span class="foot-wire" aria-hidden="true"></span>
-  <span>The structure a case is built on.</span>
+<!-- 01 Case Management -->
+<article style="margin-top: clamp(64px, 8vw, 120px); padding-top: 40px; border-top: 1px solid rgba(236,231,223,.1); display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 440px), 1fr)); gap: 48px 96px; align-items: center">
+<div style="display: flex; flex-direction: column; gap: 18px; max-width: 540px">
+<p style="margin: 0; font-family: 'Geist Mono', ui-monospace, monospace; font-size: 12px; letter-spacing: .14em; color: #A39C91">01 &nbsp;·&nbsp; CASE MANAGEMENT</p>
+<h3 style="margin: 0; font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: clamp(32px, 3.2vw, 46px); line-height: 1.05; letter-spacing: -.015em">From the first call to the courtroom.</h3>
+<p style="margin: 0; font-size: 16px; line-height: 1.7; color: #A39C91">Intake, the case file and the court calendar in one place, with each person's work laid out by priority.</p>
+<ul style="margin: 12px 0 0; padding: 0; list-style: none; display: grid; gap: 0; font-size: 15px; color: #CFC9C0">
+<li style="padding: 12px 0; border-top: 1px solid rgba(236,231,223,.08)">Tasks for every role, ranked now, this week and later</li>
+<li style="padding: 12px 0; border-top: 1px solid rgba(236,231,223,.08)">Alerts for what can't wait, like a new arrest on a pending case</li>
+<li style="padding: 12px 0; border-top: 1px solid rgba(236,231,223,.08)">Court dates checked against the clerk's record</li>
+<li style="padding: 12px 0; border-top: 1px solid rgba(236,231,223,.08); border-bottom: 1px solid rgba(236,231,223,.08)">Discovery tracked from request to tender or receipt</li>
+</ul>
+</div>
+<div aria-hidden="true" style="border-radius: 28px; padding: clamp(20px, 3vw, 36px); background: #161513; border: 1px solid rgba(236,231,223,.08); box-shadow: inset 0 1px 0 rgba(255,255,255,.04), 0 30px 60px -36px rgba(0,0,0,.7)">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 8px; padding-bottom: 18px; border-bottom: 1px solid rgba(236,231,223,.08)">
+<span style="font-family: 'Instrument Serif', Georgia, serif; font-size: 26px">In court · Room 302</span>
+<span style="display: inline-flex; align-items: center; gap: 8px; font-family: 'Geist Mono', ui-monospace, monospace; font-size: 11px; letter-spacing: .14em; color: #A39C91"><span class="pulse" style="width: 6px; height: 6px; border-radius: 50%; background: var(--accent); display: inline-block"></span>CALL · 9:30 AM</span>
+</div>
+<div style="display: grid; gap: 8px; margin-top: 18px">
+<div style="display: grid; grid-template-columns: 34px minmax(0, 1fr) auto; align-items: center; gap: 12px; padding: 12px 16px; border-radius: 14px; background: #1A1916; opacity: .6">
+<span style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: 12px; color: #A39C91">03</span>
+<span style="font-size: 14px">People v. Lindqvist</span>
+<span style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: 11px; color: #A39C91">CONTINUED · 12/02</span>
+</div>
+<div style="padding: 16px; border-radius: 18px; background: #1E1C19; border: 1px solid rgba(200,164,110,.3)">
+<div style="display: grid; grid-template-columns: 34px minmax(0, 1fr) auto; align-items: center; gap: 12px">
+<span style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: 12px; color: var(--accent)">04</span>
+<span style="font-size: 15px; font-weight: 500">People v. Castellano</span>
+<span style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: 11px; letter-spacing: .1em; color: var(--accent)">CALLED</span>
+</div>
+<div style="margin: 14px 0 0 46px; display: grid; gap: 10px">
+<div style="display: flex; flex-wrap: wrap; gap: 6px 18px; font-family: 'Geist Mono', ui-monospace, monospace; font-size: 11px; color: #A39C91">
+<span>26 CR 04417</span><span>DISCOVERY TENDERED</span><span>OFFER OPEN</span>
+</div>
+<div style="display: flex; flex-wrap: wrap; gap: 6px">
+<span style="padding: 7px 12px; border-radius: 999px; border: 1px solid rgba(236,231,223,.14); font-size: 12px; color: #CFC9C0">Continued</span>
+<span style="padding: 7px 12px; border-radius: 999px; background: var(--accent); color: #0E0D0C; font-size: 12px; font-weight: 500">Trial set</span>
+<span style="padding: 7px 12px; border-radius: 999px; border: 1px solid rgba(236,231,223,.14); font-size: 12px; color: #CFC9C0">Plea</span>
+<span style="padding: 7px 12px; border-radius: 999px; border: 1px solid rgba(236,231,223,.14); font-size: 12px; color: #CFC9C0">Motion</span>
+</div>
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px; padding-top: 10px; border-top: 1px solid rgba(236,231,223,.08); font-size: 13px">
+<span>Next date <span style="font-family: 'Geist Mono', ui-monospace, monospace; color: #ECE7DF">11/18 · JURY TRIAL</span></span>
+<span style="display: inline-flex; align-items: center; gap: 6px; color: #A39C91"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg>Matches clerk</span>
+</div>
+</div>
+</div>
+<div style="display: grid; grid-template-columns: 34px minmax(0, 1fr) auto; align-items: center; gap: 12px; padding: 12px 16px; border-radius: 14px; background: #1A1916">
+<span style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: 12px; color: #A39C91">05</span>
+<span style="font-size: 14px">People v. Okonkwo</span>
+<span style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: 11px; color: #A39C91">UP NEXT</span>
+</div>
+<div style="display: grid; grid-template-columns: 34px minmax(0, 1fr) auto; align-items: center; gap: 12px; padding: 12px 16px; border-radius: 14px; background: #1A1916">
+<span style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: 12px; color: #A39C91">06</span>
+<span style="font-size: 14px">People v. Haverkamp</span>
+<span style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: 11px; color: #A39C91">WAITING</span>
+</div>
+</div>
+</div>
+</article>
+
+<!-- 02 Evidence and Presentation (visual first, zig-zag) -->
+<article style="margin-top: clamp(64px, 8vw, 120px); padding-top: 40px; border-top: 1px solid rgba(236,231,223,.1); display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 440px), 1fr)); gap: 48px 96px; align-items: center">
+<div aria-hidden="true" style="border-radius: 28px; padding: clamp(16px, 2.4vw, 28px); background: #161513; border: 1px solid rgba(236,231,223,.08); box-shadow: inset 0 1px 0 rgba(255,255,255,.04), 0 30px 60px -36px rgba(0,0,0,.7)">
+<div style="display: flex; justify-content: space-between; align-items: center; padding: 4px 4px 16px">
+<span style="display: inline-flex; align-items: center; gap: 8px; font-family: 'Geist Mono', ui-monospace, monospace; font-size: 11px; letter-spacing: .14em; color: #A39C91"><span class="pulse" style="width: 6px; height: 6px; border-radius: 50%; background: var(--accent); display: inline-block"></span>JURY SCREEN · LIVE</span>
+<span style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: 11px; color: #A39C91">00:14:32.08</span>
+</div>
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px">
+<div style="position: relative; aspect-ratio: 4 / 3; border-radius: 16px; background: #1C1B18; overflow: hidden">
+<svg viewBox="0 0 200 150" width="100%" height="100%" fill="none" style="display: block">
+<path d="M0 40H200M0 95H200M60 0V150M140 0V150" stroke="rgba(236,231,223,.07)" stroke-width="8"></path>
+<path d="M18 128 C60 120 70 70 104 66 S150 34 182 22" stroke="var(--accent)" stroke-width="2" stroke-dasharray="4 4"></path>
+<circle cx="18" cy="128" r="4" fill="#ECE7DF"></circle>
+<circle class="pulse" cx="182" cy="22" r="5" fill="var(--accent)"></circle>
+</svg>
+<span style="position: absolute; left: 10px; bottom: 10px; font-family: 'Geist Mono', ui-monospace, monospace; font-size: 10px; letter-spacing: .1em; color: #A39C91">ROUTE · 9:41 PM</span>
+</div>
+<div style="position: relative; aspect-ratio: 4 / 3; border-radius: 16px; background: linear-gradient(160deg, #24221E, #151412); overflow: hidden; display: grid; place-items: center">
+<svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#ECE7DF" stroke-width="1.5" stroke-linejoin="round"><path d="M8 5.5v13l10.5-6.5z"></path></svg>
+<span style="position: absolute; right: 10px; top: 10px; transform: rotate(-4deg); padding: 6px 10px; border-radius: 6px; background: #ECE7DF; color: #0E0D0C; font-family: 'Geist Mono', ui-monospace, monospace; font-size: 10px; font-weight: 500; letter-spacing: .12em">EXHIBIT 14</span>
+<span style="position: absolute; left: 22%; top: 30%; width: 34%; height: 36%; border: 2px solid var(--accent); border-radius: 10px"></span>
+</div>
+</div>
+<div style="position: relative; margin-top: 12px; height: 54px; border-radius: 12px; background: #1A1916; overflow: hidden">
+<svg viewBox="0 0 400 54" width="100%" height="100%" preserveAspectRatio="none" style="display: block"><path d="M0 27 L12 21 L20 33 L30 15 L40 37 L52 24 L64 30 L76 12 L88 41 L100 25 L114 29 L126 18 L138 36 L150 26 L162 22 L176 34 L188 16 L200 38 L214 27 L226 21 L240 33 L252 19 L266 35 L280 26 L292 23 L306 31 L318 17 L332 37 L346 25 L360 29 L374 20 L388 32 L400 27" stroke="rgba(236,231,223,.28)" stroke-width="1.5" fill="none"></path></svg>
+<span class="head" style="position: absolute; top: 0; bottom: 0; left: 6%; width: 2px; background: var(--accent)"></span>
+</div>
+<p style="margin: 12px 4px 0; font-size: 13px; color: #A39C91; font-style: italic; font-family: 'Instrument Serif', Georgia, serif; font-size: 17px">"…the car turns left onto Archer, headlights off."</p>
+</div>
+<div style="display: flex; flex-direction: column; gap: 18px; max-width: 540px">
+<p style="margin: 0; font-family: 'Geist Mono', ui-monospace, monospace; font-size: 12px; letter-spacing: .14em; color: #A39C91">02 &nbsp;·&nbsp; EVIDENCE AND PRESENTATION</p>
+<h3 style="margin: 0; font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: clamp(32px, 3.2vw, 46px); line-height: 1.05; letter-spacing: -.015em">Prepare the evidence. Show it in court.</h3>
+<p style="margin: 0; font-size: 16px; line-height: 1.7; color: #A39C91">Open the case's evidence from your digital evidence platform, build the trial file, and present it from the same app.</p>
+<ul style="margin: 12px 0 0; padding: 0; list-style: none; display: grid; font-size: 15px; color: #CFC9C0">
+<li style="padding: 12px 0; border-top: 1px solid rgba(236,231,223,.08)">Clip video, redact documents and add Bates numbers</li>
+<li style="padding: 12px 0; border-top: 1px solid rgba(236,231,223,.08)">Map and timeline, with video and transcripts in sync</li>
+<li style="padding: 12px 0; border-top: 1px solid rgba(236,231,223,.08)">Present to the jury on its own screen, then export a verified jury package</li>
+<li style="padding: 12px 0; border-top: 1px solid rgba(236,231,223,.08); border-bottom: 1px solid rgba(236,231,223,.08)">Exhibits side by side, with callouts and markings</li>
+</ul>
+</div>
+</article>
+
+<!-- 03 Document Builder -->
+<article style="margin-top: clamp(64px, 8vw, 120px); padding-top: 40px; border-top: 1px solid rgba(236,231,223,.1); display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 440px), 1fr)); gap: 48px 96px; align-items: center">
+<div style="display: flex; flex-direction: column; gap: 18px; max-width: 540px">
+<p style="margin: 0; font-family: 'Geist Mono', ui-monospace, monospace; font-size: 12px; letter-spacing: .14em; color: #A39C91">03 &nbsp;·&nbsp; DOCUMENT BUILDER</p>
+<h3 style="margin: 0; font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: clamp(32px, 3.2vw, 46px); line-height: 1.05; letter-spacing: -.015em">Court documents built from the case.</h3>
+<p style="margin: 0; font-size: 16px; line-height: 1.7; color: #A39C91">Charges, jury instructions, motions, orders and subpoenas, drafted from the case and checked against the official text.</p>
+<ul style="margin: 12px 0 0; padding: 0; list-style: none; display: grid; font-size: 15px; color: #CFC9C0">
+<li style="padding: 12px 0; border-top: 1px solid rgba(236,231,223,.08)">Counts checked against the full statute, with lesser included offenses</li>
+<li style="padding: 12px 0; border-top: 1px solid rgba(236,231,223,.08)">Jury instructions suggested from the facts and the trial record</li>
+<li style="padding: 12px 0; border-top: 1px solid rgba(236,231,223,.08)">Every case cited is checked, linked and watched</li>
+<li style="padding: 12px 0; border-top: 1px solid rgba(236,231,223,.08); border-bottom: 1px solid rgba(236,231,223,.08)">Your office's clauses, signature blocks and defaults</li>
+</ul>
+</div>
+<div aria-hidden="true" style="position: relative; border-radius: 28px; padding: clamp(28px, 4vw, 52px); background: #181715; border: 1px solid rgba(236,231,223,.08); box-shadow: inset 0 1px 0 rgba(255,255,255,.04), 0 30px 60px -36px rgba(0,0,0,.7)">
+<p style="margin: 0; text-align: center; font-family: 'Geist Mono', ui-monospace, monospace; font-size: 11px; letter-spacing: .2em; color: #A39C91">INSTRUCTION NO. 12</p>
+<p style="margin: 6px 0 0; text-align: center; font-family: 'Instrument Serif', Georgia, serif; font-size: 22px">Issues in Armed Robbery</p>
+<p style="margin: 28px 0 0; font-family: 'Instrument Serif', Georgia, serif; font-size: 18px; line-height: 1.7; color: #A39C91">To sustain the charge of armed robbery, the following propositions must be proved:</p>
+<p style="margin: 12px 0 0; font-family: 'Instrument Serif', Georgia, serif; font-size: 18px; line-height: 1.7; color: #A39C91">First, that the defendant took property from the person or presence of Renata Toll; and</p>
+<p style="margin: 8px 0 0; font-family: 'Instrument Serif', Georgia, serif; font-size: 18px; line-height: 1.7; color: #A39C91">Second, that the defendant did so by the use of force or by threatening the imminent use of force; and</p>
+<p style="margin: 8px 0 0; font-family: 'Instrument Serif', Georgia, serif; font-size: 18px; line-height: 1.7; color: #A39C91">Third, that the defendant <span class="hl">carried on or about his person a firearm</span> at the time of the taking.</p>
+<div style="margin-top: 22px; display: grid; gap: 10px">
+<div style="height: 8px; width: 92%; border-radius: 4px; background: rgba(236,231,223,.07)"></div>
+<div style="height: 8px; width: 78%; border-radius: 4px; background: rgba(236,231,223,.07)"></div>
+<div style="height: 8px; width: 85%; border-radius: 4px; background: rgba(236,231,223,.07)"></div>
+</div>
+<div class="tool" style="position: absolute; right: clamp(16px, 3vw, 32px); top: 46%; display: grid; gap: 8px; padding: 12px; border-radius: 16px; background: rgba(36,34,30,.82); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,.1); box-shadow: inset 0 1px 0 rgba(255,255,255,.1), 0 20px 40px -20px rgba(0,0,0,.8); font-family: 'Geist Mono', ui-monospace, monospace; font-size: 11px; letter-spacing: .04em">
+<span style="display: inline-flex; align-items: center; gap: 8px; color: #ECE7DF"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg>Matches pattern text</span>
+<span style="color: #A39C91">Suggested from trial record</span>
+</div>
+</div>
+</article>
+
+<!-- Suite or module -->
+<div style="margin-top: clamp(80px, 9vw, 140px); display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 380px), 1fr)); border-radius: 28px; border: 1px solid rgba(236,231,223,.1); overflow: hidden">
+<div style="padding: clamp(28px, 4vw, 56px); display: flex; flex-direction: column; gap: 14px; background: #141311">
+<p style="margin: 0; font-family: 'Geist Mono', ui-monospace, monospace; font-size: 12px; letter-spacing: .14em; color: var(--accent)">AS A SUITE</p>
+<p style="margin: 0; font-family: 'Instrument Serif', Georgia, serif; font-size: clamp(26px, 2.4vw, 34px); line-height: 1.2">One sign-in and one case. Documents fill in from the case file, finished jury instructions go straight to the jury's screen, and setting a trial date sends out the witness subpoenas.</p>
+</div>
+<div style="padding: clamp(28px, 4vw, 56px); display: flex; flex-direction: column; gap: 14px; background: #0E0D0C; border-left: 1px solid rgba(236,231,223,.1)">
+<p style="margin: 0; font-family: 'Geist Mono', ui-monospace, monospace; font-size: 12px; letter-spacing: .14em; color: #A39C91">AS A MODULE</p>
+<p style="margin: 0; font-family: 'Instrument Serif', Georgia, serif; font-size: clamp(26px, 2.4vw, 34px); line-height: 1.2; color: #CFC9C0">Each module connects to your evidence platform and court records on its own. Armature Jury Instructions is also available by itself.</p>
+</div>
+</div>
+</section>
+
+<!-- Approach -->
+<section id="approach" style="max-width: 1400px; margin: 0 auto; padding: clamp(80px, 10vw, 160px) clamp(16px, 4vw, 56px); display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 360px), 1fr)); gap: 48px 96px; align-items: start">
+<div style="display: flex; flex-direction: column; gap: 20px; position: sticky; top: 120px">
+<p style="margin: 0; font-family: 'Geist Mono', ui-monospace, monospace; font-size: 12px; letter-spacing: .18em; text-transform: uppercase; color: var(--accent)">Approach</p>
+<h2 style="margin: 0; font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: clamp(40px, 4.6vw, 68px); line-height: 1; letter-spacing: -.02em">Prepared is a&#160;structure,<br><em style="color: #A39C91; white-space: nowrap">not a feeling.</em></h2>
+</div>
+<ol style="margin: 0; padding: 0; list-style: none; display: grid">
+<li style="display: grid; grid-template-columns: 56px minmax(0, 1fr); gap: 16px; padding: 28px 0; border-top: 1px solid rgba(236,231,223,.1)">
+<span style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: 12px; color: var(--accent); padding-top: 8px">01</span>
+<div><h3 style="margin: 0; font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: 28px">The case, connected.</h3><p style="margin: 8px 0 0; font-size: 15px; line-height: 1.7; color: #A39C91; max-width: 56ch">Calls, charges, exhibits and decisions link to each other, so nothing is re-entered or reconstructed from memory.</p></div>
+</li>
+<li style="display: grid; grid-template-columns: 56px minmax(0, 1fr); gap: 16px; padding: 28px 0; border-top: 1px solid rgba(236,231,223,.1)">
+<span style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: 12px; color: var(--accent); padding-top: 8px">02</span>
+<div><h3 style="margin: 0; font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: 28px">Work that holds up in court.</h3><p style="margin: 8px 0 0; font-size: 15px; line-height: 1.7; color: #A39C91; max-width: 56ch">Charges come from the statutes and instructions from the official text, with every change on the record.</p></div>
+</li>
+<li style="display: grid; grid-template-columns: 56px minmax(0, 1fr); gap: 16px; padding: 28px 0; border-top: 1px solid rgba(236,231,223,.1)">
+<span style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: 12px; color: var(--accent); padding-top: 8px">03</span>
+<div><h3 style="margin: 0; font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: 28px">AI drafts. Lawyers decide.</h3><p style="margin: 8px 0 0; font-size: 15px; line-height: 1.7; color: #A39C91; max-width: 56ch">Every suggestion shows its source, and nothing reaches the court without review.</p></div>
+</li>
+<li style="display: grid; grid-template-columns: 56px minmax(0, 1fr); gap: 16px; padding: 28px 0; border-top: 1px solid rgba(236,231,223,.1); border-bottom: 1px solid rgba(236,231,223,.1)">
+<span style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: 12px; color: var(--accent); padding-top: 8px">04</span>
+<div><h3 style="margin: 0; font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: 28px">Secure and on the record.</h3><p style="margin: 8px 0 0; font-size: 15px; line-height: 1.7; color: #A39C91; max-width: 56ch">Two-step sign-in, an audit trail on every action, and evidence verified when it leaves.</p></div>
+</li>
+</ol>
+</section>
+
+<!-- Sign in -->
+<section id="signin" style="max-width: 1400px; margin: 0 auto; padding: 0 clamp(16px, 4vw, 56px) clamp(64px, 8vw, 112px)">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 380px), 1fr)); gap: 16px">
+<a class="btn ease" href="https://core.armaturelegal.com" style="display: flex; justify-content: space-between; align-items: center; gap: 24px; padding: 28px 32px; border-radius: 22px; border: 1px solid rgba(236,231,223,.1); background: #141311; color: #ECE7DF">
+<span style="display: grid; gap: 6px"><span style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: 11px; letter-spacing: .14em; color: #A39C91">SIGN IN · INVITED USERS</span><span style="font-family: 'Instrument Serif', Georgia, serif; font-size: 26px">Armature Legal Suite Alpha Trial</span></span>
+<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"></path></svg>
+</a>
+<a class="btn ease" href="https://app.armaturelegal.com" style="display: flex; justify-content: space-between; align-items: center; gap: 24px; padding: 28px 32px; border-radius: 22px; border: 1px solid rgba(236,231,223,.1); background: #141311; color: #ECE7DF">
+<span style="display: grid; gap: 6px"><span style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: 11px; letter-spacing: .14em; color: #A39C91">SIGN IN · INVITED USERS</span><span style="font-family: 'Instrument Serif', Georgia, serif; font-size: 26px">Armature Jury Instructions</span></span>
+<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"></path></svg>
+</a>
+</div>
+</section>
+
+<!-- Contact -->
+<section id="contact" style="border-top: 1px solid rgba(236,231,223,.08); background: radial-gradient(80% 120% at 85% 100%, #1F1C17 0%, #0E0D0C 60%)">
+<div style="max-width: 1400px; margin: 0 auto; padding: clamp(80px, 10vw, 160px) clamp(16px, 4vw, 56px); display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 440px), 1fr)); gap: 40px 96px; align-items: end">
+<div style="display: flex; flex-direction: column; gap: 22px">
+<p style="margin: 0; font-family: 'Geist Mono', ui-monospace, monospace; font-size: 12px; letter-spacing: .18em; text-transform: uppercase; color: var(--accent)">Contact</p>
+<h2 style="margin: 0; font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: clamp(44px, 5.4vw, 80px); line-height: .98; letter-spacing: -.02em">Built by a trial lawyer, <em style="color: var(--accent)">for trial lawyers.</em></h2>
+</div>
+<div style="display: flex; flex-direction: column; gap: 24px; align-items: flex-start">
+<p style="margin: 0; font-size: 17px; line-height: 1.7; color: #A39C91; max-width: 48ch">See Armature with your own workflow. We'll set up a short demo for your office or firm. Armature is in an invitation-only alpha.</p>
+<a class="btn ease" href="mailto:info@armaturelegal.com?subject=Armature%20demo" style="display: inline-flex; align-items: center; gap: 10px; min-height: 52px; padding: 0 26px; border-radius: 999px; background: var(--accent); color: #0E0D0C; font-weight: 500; font-size: 15px">Email info@armaturelegal.com
+<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
+</div>
+</div>
+</section>
+
+<footer style="max-width: 1400px; margin: 0 auto; padding: 28px clamp(16px, 4vw, 56px) 40px; display: flex; flex-wrap: wrap; gap: 16px; justify-content: space-between; border-top: 1px solid rgba(236,231,223,.08); font-family: 'Geist Mono', ui-monospace, monospace; font-size: 12px; color: #A39C91">
+<span>© 2026 Armature Legal Technology, Inc.</span>
+<span>The structure a case is built on.</span>
 </footer>
-
-<script>
-  // Close the Sign in menu on a click outside it or on Escape.
-  (function () {
-    var menu = document.querySelector(".signin");
-    document.addEventListener("click", function (e) { if (menu.open && !menu.contains(e.target)) menu.open = false; });
-    document.addEventListener("keydown", function (e) { if (e.key === "Escape" && menu.open) { menu.open = false; menu.querySelector("summary").focus(); } });
-  })();
-</script>
-
+</div>
 </body>
 </html>
