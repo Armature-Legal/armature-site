@@ -16,6 +16,8 @@
 <style>
 body{margin:0;background:#161512}
 a{color:#D9A973}a:hover{color:#F3F0E8}
+.h1{font-size:clamp(38px,4.6vw,70px)}
+.h-once{font-size:clamp(36px,4.2vw,64px)}
 .wrap{max-width:1320px;margin:0 auto;padding:0 48px;box-sizing:border-box}
 .mono{font-family:'Geist Mono',ui-monospace,monospace}
 .serif{font-family:Newsreader,Georgia,serif;font-style:italic;font-weight:400}
@@ -74,6 +76,7 @@ a{color:#D9A973}a:hover{color:#F3F0E8}
 .flow-track{display:none}
 .line-row:nth-child(n){padding-left:0}
 }
+@media (max-width:440px){h2{font-size:31px !important}}
 @media (max-width:767px){.wrap{padding:0 20px}.sec{padding-top:80px !important;padding-bottom:80px !important}}
 @media (prefers-reduced-motion:reduce){.edge,.pulse-edge,.fade-in,.rise,.breathe,.route,.prog{animation:none !important;opacity:1 !important;stroke-dashoffset:0 !important}.pulse-edge{display:none}}
 
@@ -113,7 +116,7 @@ a{color:#D9A973}a:hover{color:#F3F0E8}
 <div class="wrap hero-grid" style="position:relative">
 <div style="position:relative;z-index:2;padding:40px 0 80px">
 <p class="mono rise d1" style="margin:0 0 32px;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:#A9A193;display:flex;align-items:center;gap:12px"><span class="breathe" style="display:inline-block;width:7px;height:7px;border-radius:50%;background:#D9A973"></span>Invitation-only alpha</p>
-<h1 class="rise d2" style="margin:0;font-size:clamp(48px,6.4vw,96px);line-height:.94;letter-spacing:-.045em;font-weight:500"><span style="white-space:nowrap">The structure</span> a case is <span class="serif" style="font-weight:300;letter-spacing:-.02em;color:#D9A973;white-space:nowrap">built on.</span></h1>
+<h1 class="rise d2 h1" style="margin:0;line-height:.98;letter-spacing:-.045em;font-weight:500"><span style="white-space:nowrap">The structure</span><br><span style="white-space:nowrap">a case is <span class="serif" style="font-weight:300;letter-spacing:-.02em;color:#D9A973">built on.</span></span></h1>
 <p class="rise d3" style="margin:36px 0 0;font-size:19px;line-height:1.6;color:#BDB5A6;max-width:44ch">Case management, evidence and trial presentation, and court documents for criminal trial lawyers. Every call, charge, exhibit and instruction stays connected to the case it belongs to.</p>
 <div class="rise d4" style="display:flex;flex-wrap:wrap;gap:12px;margin-top:44px">
 <a class="btn btn-brass" href="mailto:info@armaturelegal.com?subject=Armature%20demo">Request a demo
@@ -183,7 +186,7 @@ a{color:#D9A973}a:hover{color:#F3F0E8}
 <div class="two" style="align-items:end;margin-bottom:96px">
 <div>
 <p class="mono" style="margin:0 0 24px;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:#7E5226">Why Armature</p>
-<h2 style="margin:0;font-size:clamp(40px,5vw,76px);line-height:.98;letter-spacing:-.045em;font-weight:500">Enter it once.<br><span class="serif" style="font-weight:300;color:#7E5226">Use it everywhere.</span></h2>
+<h2 class="h-once" style="margin:0;line-height:.98;letter-spacing:-.045em;font-weight:500">Enter it once.<br><span class="serif" style="font-weight:300;color:#7E5226;white-space:nowrap">Use it everywhere.</span></h2>
 </div>
 <p style="margin:0;font-size:18px;line-height:1.65;color:#4F4B44;max-width:52ch">A witness entered once in the case file is the same witness on the motion, the subpoena and the jury instruction. Nothing is re-entered, and nothing is rebuilt from memory, so the work holds up because it is built on the work before it.</p>
 </div>
@@ -224,7 +227,7 @@ a{color:#D9A973}a:hover{color:#F3F0E8}
 <div class="wrap plat">
 <div>
 <p class="mono" style="margin:0 0 20px;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:#7E5226">The platform</p>
-<h2 style="margin:0 0 20px;font-size:clamp(36px,3.8vw,54px);line-height:1.02;letter-spacing:-.035em;font-weight:500">Three modules. <span class="serif">One case.</span></h2>
+<h2 style="margin:0 0 20px;font-size:clamp(36px,3.8vw,54px);line-height:1.02;letter-spacing:-.035em;font-weight:500"><span style="white-space:nowrap">Three modules.</span> <span class="serif" style="white-space:nowrap">One case.</span></h2>
 <p style="margin:0 0 48px;font-size:16px;line-height:1.65;color:#4F4B44;max-width:40ch">Use them together, or start with one alongside the systems you already run.</p>
 <div style="border-bottom:1px solid #D6CFC1">
 <button class="tab" type="button" data-tab="0" aria-pressed="true">
@@ -405,7 +408,7 @@ a{color:#D9A973}a:hover{color:#F3F0E8}
 </div>
 <div>
 <p class="mono" style="margin:0 0 20px;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:#D9A973">In court</p>
-<h2 style="margin:0;font-size:clamp(36px,3.8vw,56px);line-height:1.02;letter-spacing:-.035em;font-weight:500">Then show it <span class="serif" style="color:#D9A973">to the jury.</span></h2>
+<h2 style="margin:0;font-size:clamp(36px,3.8vw,56px);line-height:1.02;letter-spacing:-.035em;font-weight:500"><span style="white-space:nowrap">Then show it</span> <span class="serif" style="color:#D9A973;white-space:nowrap">to the jury.</span></h2>
 <p style="margin:24px 0 0;font-size:17px;line-height:1.65;color:#BDB5A6;max-width:40ch">Present from the same app you prepared in, on the jury's own screen. When the case goes back, the jury package goes with it.</p>
 <ul style="list-style:none;margin:40px 0 0;padding:0;border-bottom:1px solid #2D2A25">
 <li style="display:flex;gap:16px;padding:16px 0;border-top:1px solid #2D2A25;font-size:15px;color:#EDE8DD"><span class="mono" style="color:#D9A973;font-size:12px;padding-top:2px">→</span>Map and timeline, synced to video and transcript</li>
@@ -419,7 +422,7 @@ a{color:#D9A973}a:hover{color:#F3F0E8}
 <!-- ============ PRINCIPLES ============ -->
 <section class="sec" style="padding:160px 0 150px">
 <div class="wrap">
-<h2 style="margin:0 0 72px;font-size:clamp(40px,5vw,76px);line-height:.98;letter-spacing:-.045em;font-weight:500">Prepared is a structure,<br><span class="serif" style="font-weight:300;color:#7E5226">not a feeling.</span></h2>
+<h2 style="margin:0 0 72px;font-size:clamp(40px,5vw,76px);line-height:.98;letter-spacing:-.045em;font-weight:500"><span style="white-space:nowrap">Prepared is a structure,</span><br><span class="serif" style="font-weight:300;color:#7E5226;white-space:nowrap">not a feeling.</span></h2>
 <div style="border-bottom:1px solid #C9BFAE">
 <div class="line-row"><span class="big" style="font-size:clamp(26px,2.6vw,38px);letter-spacing:-.025em">The case, connected.</span><span style="font-size:15px;line-height:1.6;color:#4F4B44">Calls, charges, exhibits and decisions link to each other.</span></div>
 <div class="line-row"><span class="big" style="font-size:clamp(26px,2.6vw,38px);letter-spacing:-.025em">Work that holds up in court.</span><span style="font-size:15px;line-height:1.6;color:#4F4B44">Charges from the statutes, instructions from the official text, every change on the record.</span></div>
@@ -442,7 +445,7 @@ a{color:#D9A973}a:hover{color:#F3F0E8}
 </div>
 <div>
 <p class="mono" style="margin:0 0 20px;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:#7E5226">The founder</p>
-<h2 style="margin:0;font-size:clamp(38px,4.2vw,62px);line-height:1;letter-spacing:-.04em;font-weight:500">Built by a trial lawyer, <span class="serif" style="font-weight:300;color:#7E5226">for trial lawyers.</span></h2>
+<h2 style="margin:0;font-size:clamp(38px,4.2vw,62px);line-height:1;letter-spacing:-.04em;font-weight:500"><span style="white-space:nowrap">Built by a trial lawyer,</span> <span class="serif" style="font-weight:300;color:#7E5226;white-space:nowrap">for trial lawyers.</span></h2>
 <p style="margin:32px 0 0;font-size:18px;line-height:1.65;color:#4F4B44;max-width:52ch">Stacy Weber has spent more than fifteen years in appellate litigation, felony trial work and legal technology leadership. Before law school she wrote software as a programmer at Boeing. Armature is the system she wanted at counsel table, designed by someone who has tried the cases and built the systems.</p>
 </div>
 </div>
@@ -452,7 +455,7 @@ a{color:#D9A973}a:hover{color:#F3F0E8}
 <section id="contact" class="sec" style="position:relative;padding:160px 0 140px;background:#161512;color:#F3F0E8;overflow:hidden">
 <svg viewBox="0 0 32 32" fill="none" aria-hidden="true" style="position:absolute;right:-6%;top:-10%;width:640px;height:640px;opacity:.5"><path d="M6 28 L16 4 L26 28" stroke="#2D2A25" stroke-width=".25"></path><path d="M10.2 18 H21.8" stroke="#4A3D2C" stroke-width=".25"></path></svg>
 <div class="wrap" style="position:relative">
-<h2 style="margin:0;font-size:clamp(44px,6vw,92px);line-height:.95;letter-spacing:-.045em;font-weight:500;max-width:14ch">See it with <span class="serif" style="font-weight:300;color:#D9A973">your own workflow.</span></h2>
+<h2 style="margin:0;font-size:clamp(44px,6vw,92px);line-height:.95;letter-spacing:-.045em;font-weight:500;max-width:14ch"><span style="white-space:nowrap">See it with</span> <span class="serif" style="font-weight:300;color:#D9A973;white-space:nowrap">your own workflow.</span></h2>
 <div class="two" style="margin-top:64px;align-items:end">
 <div style="display:flex;flex-wrap:wrap;gap:12px">
 <a class="btn btn-brass" href="mailto:info@armaturelegal.com?subject=Armature%20demo">Request a demo
