@@ -1,6 +1,6 @@
 # Armature home page
 
-A single static page: `index.html`, `styles.css`, the logo files in `brand/`, the favicon and the bundled fonts in `fonts/`.
+A single static page: `index.html` (styles and the module-tab script are inline), the photos in `images/`, the logo files in `brand/`, the favicon and the bundled fonts in `fonts/`. `styles.css` is kept from the earlier design and is no longer loaded.
 No build step, no server code, no outside requests, so it works on any web host.
 
 ## Where it lives

@@ -4,351 +4,492 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Armature · The structure a case is built on</title>
-  <meta name="description" content="Case management, evidence and trial presentation, and court documents for criminal trial lawyers. Use the whole suite, or start with one module.">
-  <meta name="theme-color" content="#0E0D0C">
+  <meta name="description" content="Case management, evidence and trial presentation, and court documents for criminal trial lawyers. Every call, charge, exhibit and instruction stays connected to the case it belongs to.">
+  <meta name="theme-color" content="#161512">
   <link rel="canonical" href="https://www.armaturelegal.com/">
   <meta property="og:title" content="Armature">
-  <meta property="og:description" content="The structure a case is built on. Case management, evidence and trial presentation, and court documents for criminal trial lawyers. Use the whole suite, or start with one module.">
+  <meta property="og:description" content="The structure a case is built on. Case management, evidence and trial presentation, and court documents for criminal trial lawyers.">
   <meta property="og:url" content="https://www.armaturelegal.com/">
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600&amp;family=Geist+Mono:wght@400;500&amp;family=Instrument+Serif:ital@0;1&amp;display=swap">
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600&amp;family=Geist+Mono:wght@400;500&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;1,6..72,300;1,6..72,400&amp;display=swap" rel="stylesheet">
 <style>
-body{margin:0;background:#0E0D0C}
-a{color:#ECE7DF}a:hover{color:#C8A46E}
-.ar *{box-sizing:border-box}
-.ar a{text-decoration:none}
-.ease{transition:transform .5s cubic-bezier(.16,1,.3,1),background-color .3s cubic-bezier(.16,1,.3,1),color .3s cubic-bezier(.16,1,.3,1),border-color .3s cubic-bezier(.16,1,.3,1)}
-.btn:hover{transform:translateY(-2px)}
-.btn:active{transform:translateY(1px) scale(.98)}
-.ghost:hover{border-color:rgba(236,231,223,.4)}
-@keyframes breathe{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.9);opacity:0}}
+body{margin:0;background:#161512}
+a{color:#D9A973}a:hover{color:#F3F0E8}
+.wrap{max-width:1320px;margin:0 auto;padding:0 48px;box-sizing:border-box}
+.mono{font-family:'Geist Mono',ui-monospace,monospace}
+.serif{font-family:Newsreader,Georgia,serif;font-style:italic;font-weight:400}
+.hero-grid{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:24px;align-items:center;min-height:calc(100dvh - 88px)}
+.two{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:80px}
+.jury{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,4fr);gap:72px;align-items:center}
+.plat{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,8fr);gap:56px;align-items:start}
+.appgrid{display:grid;grid-template-columns:150px minmax(0,1.1fr) minmax(0,1fr)}
+.docgrid{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr)}
+.btn{display:inline-flex;align-items:center;gap:10px;min-height:48px;padding:0 24px;border-radius:999px;font:500 15px/1 Geist,system-ui,sans-serif;text-decoration:none;transition:transform .35s cubic-bezier(.16,1,.3,1),background-color .35s cubic-bezier(.16,1,.3,1),color .35s}
+.btn:active{transform:scale(.98)}
+.btn svg{transition:transform .35s cubic-bezier(.16,1,.3,1)}
+.btn:hover svg{transform:translateX(3px)}
+.btn-brass{background:#D9A973;color:#161512}.btn-brass:hover{background:#F3F0E8;color:#161512}
+.btn-ghost{border:1px solid #4A463F;color:#F3F0E8}.btn-ghost:hover{border-color:#D9A973;color:#D9A973}
+.btn-ink{background:#161512;color:#F3F0E8}.btn-ink:hover{background:#7E5226;color:#F3F0E8}
+.nav a.nl{color:#BDB5A6;text-decoration:none;font-size:14px;transition:color .3s}.nav a.nl:hover{color:#F3F0E8}
+.tab{all:unset;box-sizing:border-box;display:block;width:100%;cursor:pointer;padding:26px 0 24px;border-top:1px solid #D6CFC1;position:relative;min-height:44px}
+.tab:focus-visible{outline:2px solid #7E5226;outline-offset:4px}
+.prog{position:absolute;left:0;top:-1px;height:2px;width:100%;background:#7E5226;transform-origin:left;transform:scaleX(0);animation:prog 7s linear forwards}
+.chip{display:inline-block;vertical-align:.18em;font-family:'Geist Mono',monospace;font-size:.28em;letter-spacing:.12em;padding:.55em .9em;border:1px solid #C9BFAE;border-radius:999px;color:#4F4B44;background:#FBF9F4;line-height:1;white-space:nowrap}
+.node rect{transition:stroke .3s,fill .3s}
+.node:hover rect{stroke:#D9A973;fill:#24221E}
+.edge{stroke-dasharray:100;stroke-dashoffset:100;animation:draw 1.8s cubic-bezier(.16,1,.3,1) forwards}
+.pulse-edge{stroke-dasharray:5 95;animation:travel 3.6s linear infinite}
+.fade-in{opacity:0;animation:fade .8s ease forwards}
+.rise{opacity:0;animation:rise 1s cubic-bezier(.16,1,.3,1) forwards}
+.d1{animation-delay:.1s}.d2{animation-delay:.25s}.d3{animation-delay:.4s}.d4{animation-delay:.55s}.d5{animation-delay:.7s}.d6{animation-delay:.9s}.d7{animation-delay:1.1s}.d8{animation-delay:1.3s}
+.breathe{animation:breathe 2.6s ease-in-out infinite}
+.route{stroke-dasharray:100;stroke-dashoffset:100;animation:route 8s cubic-bezier(.45,0,.2,1) infinite}
+.line-row{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,4fr);gap:48px;align-items:baseline;padding:36px 0;border-top:1px solid #C9BFAE;transition:padding-left .5s cubic-bezier(.16,1,.3,1)}
+.line-row:nth-child(2){padding-left:8%}.line-row:nth-child(3){padding-left:16%}.line-row:nth-child(4){padding-left:24%}
+.line-row .big{transition:color .4s}
+.line-row:hover .big{color:#7E5226}
+@keyframes draw{to{stroke-dashoffset:0}}
+@keyframes travel{from{stroke-dashoffset:100}to{stroke-dashoffset:0}}
+@keyframes fade{to{opacity:1}}
 @keyframes rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
-@keyframes draw{from{stroke-dashoffset:1400}to{stroke-dashoffset:0}}
-@keyframes fadein{from{opacity:0}to{opacity:1}}
-@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-@keyframes playhead{from{transform:translateX(0)}to{transform:translateX(560%)}}
-@keyframes sweep{0%{transform:scaleX(0)}35%,80%{transform:scaleX(1)}100%{transform:scaleX(1);opacity:0}}
-@keyframes floatin{0%,30%{opacity:0;transform:translateY(10px)}42%,88%{opacity:1;transform:none}100%{opacity:0;transform:translateY(-4px)}}
-@keyframes drift{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
-.pulse{position:relative}
-.pulse::after{content:"";position:absolute;inset:0;border-radius:50%;background:inherit;animation:breathe 2.4s cubic-bezier(.16,1,.3,1) infinite}
-.rise{opacity:0;animation:rise 1s cubic-bezier(.16,1,.3,1) forwards;animation-delay:calc(var(--i) * 110ms)}
-.draw{stroke-dasharray:1400;stroke-dashoffset:1400;animation:draw 2.6s cubic-bezier(.16,1,.3,1) .3s forwards}
-.node{opacity:0;animation:fadein .8s ease forwards;animation-delay:calc(1s + var(--i) * 160ms)}
-.track{animation:marquee 46s linear infinite}
-.head{animation:playhead 7s linear infinite}
-.hl{position:relative;color:#ECE7DF}
-.hl::before{content:"";position:absolute;left:-2px;right:-2px;top:2px;bottom:0;background:var(--accent);opacity:.22;transform-origin:left;transform:scaleX(0);animation:sweep 6s cubic-bezier(.16,1,.3,1) infinite}
-.tool{animation:floatin 6s cubic-bezier(.16,1,.3,1) infinite}
-.drift{animation:drift 6s ease-in-out infinite}
-.still *,.still *::before,.still *::after{animation:none!important;opacity:1;stroke-dashoffset:0}
-@media (prefers-reduced-motion: reduce){.ar *,.ar *::before,.ar *::after{animation:none!important;opacity:1;stroke-dashoffset:0}}
+@keyframes breathe{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.35;transform:scale(.75)}}
+@keyframes prog{to{transform:scaleX(1)}}
+.flow{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:40px;position:relative}
+.flow-track{position:absolute;left:0;right:0;top:5px;height:2px;background:#D6CFC1;overflow:hidden}
+.flow-sweep{position:absolute;inset:0;background:linear-gradient(to right,rgba(126,82,38,0),#7E5226);transform:translateX(-100%);animation:sweep 5s cubic-bezier(.65,0,.35,1) infinite}
+@keyframes sweep{0%{transform:translateX(-100%)}70%,100%{transform:translateX(0)}}
+@keyframes route{0%{stroke-dashoffset:100}70%,100%{stroke-dashoffset:0}}
+@media (max-width:1000px){
+.hero-grid,.two,.jury,.plat,.docgrid{grid-template-columns:minmax(0,1fr);gap:40px}
+.hero-grid{min-height:0;padding-bottom:40px}
+.appgrid{grid-template-columns:minmax(0,1fr)}
+.side,.hide-sm{display:none !important}
+.hero-art{margin-right:0 !important}
+.deco{display:none}
+.navlinks{display:none !important}
+.line-row{grid-template-columns:minmax(0,1fr);gap:12px}
+.flow{grid-template-columns:minmax(0,1fr);gap:32px}
+.flow-track{display:none}
+.line-row:nth-child(n){padding-left:0}
+}
+@media (max-width:767px){.wrap{padding:0 20px}.sec{padding-top:80px !important;padding-bottom:80px !important}}
+@media (prefers-reduced-motion:reduce){.edge,.pulse-edge,.fade-in,.rise,.breathe,.route,.prog{animation:none !important;opacity:1 !important;stroke-dashoffset:0 !important}.pulse-edge{display:none}}
+
+.tab .bar{position:absolute;left:0;top:-1px;height:2px;width:100%;background:#7E5226;transform-origin:left;transform:scaleX(0)}
+.tab[aria-pressed="true"] .bar{transform:scaleX(1)}
+.tab.auto[aria-pressed="true"] .bar{animation:prog 7s linear forwards;transform:scaleX(0)}
+.tab .kick,.tab .ttl{color:#6B665D}
+.tab[aria-pressed="true"] .kick{color:#7E5226}
+.tab[aria-pressed="true"] .ttl{color:#161512}
+.tab .desc{display:none}
+.tab[aria-pressed="true"] .desc{display:block}
+.screen[hidden]{display:none}
+@media (prefers-reduced-motion:reduce){.tab.auto[aria-pressed="true"] .bar{animation:none;transform:scaleX(1)}}
 </style>
-<style>html{scroll-behavior:smooth}#modules,#approach,#signin,#contact{scroll-margin-top:84px}</style>
 </head>
 <body>
-<div class="ar " style="--accent: #C8A46E; background: #0E0D0C; color: #ECE7DF; font-family: 'Geist', ui-sans-serif, system-ui, sans-serif; font-weight: 400; overflow: hidden; -webkit-font-smoothing: antialiased">
+<div style="width:100%;background:#F3F0E8;color:#161512;font-family:Geist,system-ui,sans-serif;-webkit-font-smoothing:antialiased">
 
-<!-- Nav -->
-<header style="position: sticky; top: 0; z-index: 20; background: rgba(14,13,12,.78); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border-bottom: 1px solid rgba(236,231,223,.08); box-shadow: inset 0 -1px 0 rgba(255,255,255,.03)">
-<div style="max-width: 1400px; margin: 0 auto; padding: 18px clamp(16px, 4vw, 56px); display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px">
-<a href="#top" aria-label="Armature, home" style="display: flex; align-items: center; gap: 12px; color: #ECE7DF">
-<svg width="26" height="26" viewBox="0 0 100 100" fill="none" aria-hidden="true"><path d="M16 86 L50 14 L84 86" stroke="#ECE7DF" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"></path><path d="M31 60 H69" stroke="var(--accent)" stroke-width="6" stroke-linecap="round"></path><circle cx="50" cy="14" r="7" fill="#0E0D0C" stroke="#ECE7DF" stroke-width="5"></circle></svg>
-<span style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: 14px; letter-spacing: .32em">ARMATURE</span>
+<!-- ============ HERO ============ -->
+<section id="top" style="position:relative;background:#161512;color:#F3F0E8;overflow:hidden">
+<div aria-hidden="true" style="position:absolute;inset:0;background:radial-gradient(ellipse 60% 70% at 72% 50%,rgba(217,169,115,.10),rgba(22,21,18,0) 70%);pointer-events:none"></div>
+
+<header class="wrap nav" style="position:relative;display:flex;align-items:center;justify-content:space-between;height:88px;gap:24px">
+<a href="#top" style="display:flex;align-items:center;gap:12px;text-decoration:none;color:#F3F0E8" aria-label="Armature, home">
+<svg width="28" height="28" viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M6 28 L16 4 L26 28" stroke="#F3F0E8" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path><path d="M10.2 18 H21.8" stroke="#D9A973" stroke-width="1.6" stroke-linecap="round"></path><circle cx="16" cy="4" r="2.2" fill="#161512" stroke="#F3F0E8" stroke-width="1.4"></circle></svg>
+<span class="mono" style="font-size:13px;letter-spacing:.26em;font-weight:500">ARMATURE</span>
 </a>
-<nav aria-label="Main" style="display: flex; flex-wrap: wrap; align-items: center; gap: 28px; font-size: 14px">
-<a href="#modules" style="color: #A39C91">Modules</a>
-<a href="#approach" style="color: #A39C91">Approach</a>
-<a href="#signin" style="color: #A39C91">Sign in</a>
-<a class="btn ease" href="#contact" style="display: inline-flex; align-items: center; min-height: 44px; padding: 0 20px; border-radius: 999px; background: #ECE7DF; color: #0E0D0C; font-weight: 500">Request a demo</a>
+<nav class="navlinks" style="display:flex;align-items:center;gap:40px" aria-label="Primary">
+<a class="nl" href="#platform">Platform</a>
+<a class="nl" href="#court">In court</a>
+<a class="nl" href="#founder">Founder</a>
+<a class="nl" href="#signin">Sign in</a>
 </nav>
-</div>
+<a class="btn btn-ghost" href="mailto:info@armaturelegal.com?subject=Armature%20demo" style="min-height:44px;padding:0 20px;font-size:14px">Request a demo</a>
 </header>
 
-<!-- Hero -->
-<section id="top" style="max-width: 1400px; margin: 0 auto; padding: clamp(56px, 8vw, 120px) clamp(16px, 4vw, 56px) clamp(56px, 7vw, 104px); display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 480px), 1fr)); gap: clamp(40px, 6vw, 96px); align-items: center; min-height: 860px">
-<div style="display: flex; flex-direction: column; gap: 28px; max-width: 620px">
-<p class="rise" style="--i: 0; margin: 0; display: inline-flex; align-items: center; gap: 12px; font-family: 'Geist Mono', ui-monospace, monospace; font-size: 12px; letter-spacing: .18em; text-transform: uppercase; color: #A39C91">
-<span class="pulse" style="width: 7px; height: 7px; border-radius: 50%; background: var(--accent); display: inline-block"></span>Invitation-only alpha
-</p>
-<h1 class="rise" style="--i: 1; margin: 0; font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: clamp(48px, 6.2vw, 92px); line-height: .98; letter-spacing: -.02em">The structure a case is <em style="color: var(--accent)">built on.</em></h1>
-<p class="rise" style="--i: 2; margin: 0; font-size: 18px; line-height: 1.65; color: #A39C91; max-width: 52ch">Case management, evidence and trial presentation, and court documents for criminal trial lawyers. Use the whole suite, or start with one module.</p>
-<div class="rise" style="--i: 3; display: flex; flex-wrap: wrap; gap: 12px; margin-top: 8px">
-<a class="btn ease" href="#contact" style="display: inline-flex; align-items: center; gap: 10px; min-height: 52px; padding: 0 26px; border-radius: 999px; background: var(--accent); color: #0E0D0C; font-weight: 500; font-size: 15px">Request a demo
-<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
-<a class="btn ghost ease" href="#modules" style="display: inline-flex; align-items: center; min-height: 52px; padding: 0 26px; border-radius: 999px; border: 1px solid rgba(236,231,223,.18); color: #ECE7DF; font-size: 15px">See the modules</a>
+<div class="wrap hero-grid" style="position:relative">
+<div style="position:relative;z-index:2;padding:40px 0 80px">
+<p class="mono rise d1" style="margin:0 0 32px;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:#A9A193;display:flex;align-items:center;gap:12px"><span class="breathe" style="display:inline-block;width:7px;height:7px;border-radius:50%;background:#D9A973"></span>Invitation-only alpha</p>
+<h1 class="rise d2" style="margin:0;font-size:clamp(48px,6.4vw,96px);line-height:.94;letter-spacing:-.045em;font-weight:500">The structure a case is <span class="serif" style="font-weight:300;letter-spacing:-.02em;color:#D9A973;white-space:nowrap">built on.</span></h1>
+<p class="rise d3" style="margin:36px 0 0;font-size:19px;line-height:1.6;color:#BDB5A6;max-width:44ch">Case management, evidence and trial presentation, and court documents for criminal trial lawyers. Every call, charge, exhibit and instruction stays connected to the case it belongs to.</p>
+<div class="rise d4" style="display:flex;flex-wrap:wrap;gap:12px;margin-top:44px">
+<a class="btn btn-brass" href="mailto:info@armaturelegal.com?subject=Armature%20demo">Request a demo
+<svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
+<a class="btn btn-ghost" href="#platform">See how it connects</a>
 </div>
+<p class="mono rise d5" style="margin:56px 0 0;font-size:11px;letter-spacing:.16em;color:#8C8577">PROSECUTION · DEFENSE · PRIVATE PRACTICE</p>
 </div>
 
-<!-- Hero art: the frame, drawn, with the parts of a case on its joints -->
-<div aria-hidden="true" style="position: relative; width: 100%; aspect-ratio: 8 / 7; border-radius: 28px; border: 1px solid rgba(236,231,223,.08); background: radial-gradient(120% 90% at 70% 20%, #1D1B18 0%, #121110 55%, #0E0D0C 100%); box-shadow: inset 0 1px 0 rgba(255,255,255,.05), 0 40px 80px -40px rgba(0,0,0,.6); overflow: hidden">
-<svg viewBox="0 0 640 560" width="100%" height="100%" fill="none" style="display: block">
-<g stroke="rgba(236,231,223,.05)" stroke-width="1">
-<path d="M0 140H640M0 280H640M0 420H640M160 0V560M320 0V560M480 0V560"></path>
+<!-- The case constellation -->
+<div class="hero-art" style="position:relative;margin-right:-48px">
+<svg viewBox="0 0 800 640" role="img" aria-label="A single criminal case shown as a structure: intake, counts, evidence, witnesses, subpoenas, instructions and verdict forms all linked to one case record" style="width:100%;height:auto;display:block;font-family:'Geist Mono',monospace">
+<!-- the armature A -->
+<path class="edge" pathLength="100" d="M140 610 L400 40 L660 610" stroke="#2D2A25" stroke-width="1.2" fill="none" style="animation-duration:2.6s"></path>
+<path class="edge" pathLength="100" d="M242 386 H558" stroke="#3A342A" stroke-width="1.2" fill="none" style="animation-delay:.8s;animation-duration:2s"></path>
+
+<!-- edges -->
+<g stroke="#4A463F" stroke-width="1" fill="none">
+<path class="edge" pathLength="100" d="M430 320 L180 120" style="animation-delay:.6s"></path>
+<path class="edge" pathLength="100" d="M430 320 L600 90" style="animation-delay:.7s"></path>
+<path class="edge" pathLength="100" d="M430 320 L690 250" style="animation-delay:.8s"></path>
+<path class="edge" pathLength="100" d="M430 320 L660 460" style="animation-delay:.9s"></path>
+<path class="edge" pathLength="100" d="M430 320 L460 570" style="animation-delay:1s"></path>
+<path class="edge" pathLength="100" d="M430 320 L210 510" style="animation-delay:1.1s"></path>
+<path class="edge" pathLength="100" d="M430 320 L110 320" style="animation-delay:1.2s"></path>
+<path class="edge" pathLength="100" d="M430 320 L330 180" style="animation-delay:1.3s"></path>
+<path class="edge" pathLength="100" d="M330 180 L180 120" stroke-dasharray="2 4" style="animation-delay:1.5s"></path>
+<path class="edge" pathLength="100" d="M330 180 C 520 200, 640 330, 660 460" style="animation-delay:1.6s"></path>
+<path class="edge" pathLength="100" d="M690 250 L600 90" style="animation-delay:1.7s"></path>
+<path class="edge" pathLength="100" d="M210 510 L110 320" style="animation-delay:1.8s"></path>
+<path class="edge" pathLength="100" d="M660 460 L460 570" style="animation-delay:1.9s"></path>
+<path class="edge" pathLength="100" d="M690 250 L660 460" style="animation-delay:2s"></path>
 </g>
-<path id="frameA" class="draw" d="M130 492 L320 70 L510 492" stroke="#ECE7DF" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"></path>
-<path class="draw" d="M206 324 H434" stroke="var(--accent)" stroke-width="2.5" stroke-linecap="round" style="animation-delay: .9s"></path>
-<g stroke="rgba(236,231,223,.22)" stroke-width="1" stroke-dasharray="3 5">
-<path d="M320 70 V32 H404"></path>
-<path d="M253 220 H176 V176"></path>
-<path d="M206 324 H96"></path>
-<path d="M434 324 H548"></path>
-<path d="M466 394 V430 H560"></path>
-<path d="M130 492 V524 H64"></path>
-<path d="M510 492 V524 H584"></path>
+<!-- traveling pulses -->
+<g stroke="#D9A973" stroke-width="2" fill="none" stroke-linecap="round">
+<path class="pulse-edge" pathLength="100" d="M330 180 C 520 200, 640 330, 660 460" style="animation-delay:2.4s"></path>
+<path class="pulse-edge" pathLength="100" d="M430 320 L210 510" style="animation-delay:3.2s;animation-duration:2.8s"></path>
+<path class="pulse-edge" pathLength="100" d="M660 460 L460 570" style="animation-delay:4.1s;animation-duration:2.4s"></path>
+<path class="pulse-edge" pathLength="100" d="M600 90 L430 320" style="animation-delay:2.8s;animation-duration:3.2s"></path>
 </g>
-<circle class="node" style="--i: 0" cx="320" cy="70" r="8" fill="#0E0D0C" stroke="#ECE7DF" stroke-width="2"></circle>
-<circle class="node" style="--i: 1" cx="253" cy="220" r="5" fill="#ECE7DF"></circle>
-<circle class="node" style="--i: 2" cx="206" cy="324" r="5" fill="var(--accent)"></circle>
-<circle class="node" style="--i: 3" cx="434" cy="324" r="5" fill="var(--accent)"></circle>
-<circle class="node" style="--i: 4" cx="466" cy="394" r="5" fill="#ECE7DF"></circle>
-<circle class="node" style="--i: 5" cx="130" cy="492" r="5" fill="#ECE7DF"></circle>
-<circle class="node" style="--i: 6" cx="510" cy="492" r="5" fill="#ECE7DF"></circle>
-<g font-family="Geist Mono, monospace" font-size="11" letter-spacing="1.4" fill="#A39C91">
-<text class="node" style="--i: 0" x="412" y="36">INTAKE</text>
-<text class="node" style="--i: 1" x="160" y="166">COUNT II</text>
-<text class="node" style="--i: 2" x="40" y="314">EXHIBIT 14</text>
-<text class="node" style="--i: 3" x="470" y="314">INSTRUCTION</text>
-<text class="node" style="--i: 4" x="474" y="420">WITNESSES</text>
-<text class="node" style="--i: 5" x="40" y="514">DISCOVERY</text>
-<text class="node" style="--i: 6" x="520" y="514">VERDICT</text>
+
+<!-- nodes -->
+<g class="node fade-in d3"><circle cx="180" cy="120" r="4" fill="#BDB5A6"></circle><rect x="119" y="134" width="122" height="26" rx="13" fill="#1C1B17" stroke="#3A3731"></rect><text x="180" y="151" text-anchor="middle" font-size="10.5" letter-spacing="1.2" fill="#CFC8BA">INTAKE · 09/14</text></g>
+<g class="node fade-in d4"><circle cx="600" cy="90" r="4" fill="#BDB5A6"></circle><rect x="525" y="104" width="150" height="26" rx="13" fill="#1C1B17" stroke="#3A3731"></rect><text x="600" y="121" text-anchor="middle" font-size="10.5" letter-spacing="1.2" fill="#CFC8BA">BODY CAM · 3 FILES</text></g>
+<g class="node fade-in d5"><circle cx="690" cy="250" r="4" fill="#D9A973"></circle><rect x="604" y="264" width="172" height="26" rx="13" fill="#1C1B17" stroke="#3A3731"></rect><text x="690" y="281" text-anchor="middle" font-size="10.5" letter-spacing="1.2" fill="#CFC8BA">EXHIBIT 14 · 00:14:32</text></g>
+<g class="node fade-in d6"><circle cx="660" cy="460" r="4" fill="#D9A973"></circle><rect x="585" y="474" width="150" height="26" rx="13" fill="#1C1B17" stroke="#3A3731"></rect><text x="660" y="491" text-anchor="middle" font-size="10.5" letter-spacing="1.2" fill="#CFC8BA">INSTRUCTION NO. 12</text></g>
+<g class="node fade-in d7"><circle cx="460" cy="570" r="4" fill="#BDB5A6"></circle><rect x="400" y="584" width="120" height="26" rx="13" fill="#1C1B17" stroke="#3A3731"></rect><text x="460" y="601" text-anchor="middle" font-size="10.5" letter-spacing="1.2" fill="#CFC8BA">VERDICT FORMS</text></g>
+<g class="node fade-in d6"><circle cx="210" cy="510" r="4" fill="#D9A973"></circle><rect x="135" y="524" width="150" height="26" rx="13" fill="#1C1B17" stroke="#3A3731"></rect><text x="210" y="541" text-anchor="middle" font-size="10.5" letter-spacing="1.2" fill="#CFC8BA">SUBPOENAS · 6 SENT</text></g>
+<g class="node fade-in d5"><circle cx="110" cy="320" r="4" fill="#BDB5A6"></circle><rect x="35" y="334" width="150" height="26" rx="13" fill="#1C1B17" stroke="#3A3731"></rect><text x="110" y="351" text-anchor="middle" font-size="10.5" letter-spacing="1.2" fill="#CFC8BA">WITNESS · M. REYES</text></g>
+<g class="node fade-in d4"><circle cx="330" cy="180" r="4" fill="#D9A973"></circle><rect x="234" y="194" width="192" height="26" rx="13" fill="#1C1B17" stroke="#3A3731"></rect><text x="330" y="211" text-anchor="middle" font-size="10.5" letter-spacing="1.2" fill="#CFC8BA">COUNT II · ARMED ROBBERY</text></g>
+
+<!-- center -->
+<g class="fade-in d2">
+<circle cx="430" cy="320" r="34" fill="none" stroke="#D9A973" stroke-opacity=".25"></circle>
+<circle class="breathe" cx="430" cy="320" r="52" fill="none" stroke="#D9A973" stroke-opacity=".12" style="transform-origin:430px 320px"></circle>
+<rect x="352" y="300" width="156" height="40" rx="20" fill="#24221E" stroke="#D9A973"></rect>
+<text x="430" y="325" text-anchor="middle" font-size="13" letter-spacing="1.8" fill="#F3F0E8">26 CR 04417</text>
 </g>
-<circle r="4" fill="var(--accent)">
-<animateMotion dur="9s" repeatCount="indefinite" rotate="auto"><mpath href="#frameA"></mpath></animateMotion>
-</circle>
 </svg>
-<div class="drift" style="position: absolute; left: 24px; bottom: 24px; display: flex; align-items: center; gap: 10px; padding: 10px 14px; border-radius: 14px; background: rgba(26,25,22,.72); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,.08); box-shadow: inset 0 1px 0 rgba(255,255,255,.08); font-family: 'Geist Mono', ui-monospace, monospace; font-size: 11px; letter-spacing: .08em; color: #A39C91">
-<span class="pulse" style="width: 6px; height: 6px; border-radius: 50%; background: var(--accent); display: inline-block"></span>26 CR 04417 · LINKED ACROSS 3 MODULES
 </div>
 </div>
 </section>
 
-<!-- Crossbar between hero and modules: the A's bar, with its joints -->
-<div aria-hidden="true" style="max-width: 1400px; margin: 0 auto; padding: 0 clamp(16px, 4vw, 56px)">
-<div style="display: flex; align-items: center">
-<span style="flex: none; width: 10px; height: 10px; border-radius: 50%; background: var(--accent)"></span>
-<span style="flex: 1; height: 2.5px; border-radius: 2px; background: var(--accent)"></span>
-<span style="flex: none; width: 10px; height: 10px; border-radius: 50%; background: var(--accent)"></span>
+<!-- ============ STATEMENT ============ -->
+<section class="sec" style="padding:160px 0 150px">
+<div class="wrap">
+<div class="two" style="align-items:end;margin-bottom:96px">
+<div>
+<p class="mono" style="margin:0 0 24px;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:#7E5226">Why Armature</p>
+<h2 style="margin:0;font-size:clamp(40px,5vw,76px);line-height:.98;letter-spacing:-.045em;font-weight:500">Enter it once.<br><span class="serif" style="font-weight:300;color:#7E5226">Use it everywhere.</span></h2>
+</div>
+<p style="margin:0;font-size:18px;line-height:1.65;color:#4F4B44;max-width:52ch">A witness entered once in the case file is the same witness on the motion, the subpoena and the jury instruction. Nothing is re-entered, and nothing is rebuilt from memory, so the work holds up because it is built on the work before it.</p>
+</div>
+
+<div class="flow">
+<div class="flow-track" aria-hidden="true"><div class="flow-sweep"></div></div>
+
+<div style="position:relative;padding-top:44px">
+<span aria-hidden="true" style="position:absolute;left:0;top:0;width:12px;height:12px;box-sizing:border-box;border-radius:50%;border:2px solid #7E5226;background:#F3F0E8"></span>
+<p class="mono" style="margin:0 0 18px;font-size:11px;letter-spacing:.16em;color:#7E5226">01 · CASE FILE</p>
+<p style="margin:0;font-size:13px;color:#6B665D">Witness list · Eyewitness</p>
+<p style="margin:6px 0 0;font-size:20px;letter-spacing:-.01em"><span style="background:#F1E1C9;padding:1px 5px;border-radius:4px">Dana Whitfield</span></p>
+</div>
+
+<div style="position:relative;padding-top:44px">
+<span aria-hidden="true" style="position:absolute;left:0;top:0;width:12px;height:12px;box-sizing:border-box;border-radius:50%;border:2px solid #7E5226;background:#F3F0E8"></span>
+<p class="mono" style="margin:0 0 18px;font-size:11px;letter-spacing:.16em;color:#6B665D">02 · MOTION</p>
+<p style="margin:0;font-family:Newsreader,Georgia,serif;font-size:17px;line-height:1.55;color:#2E2C28">Motion in limine regarding the out-of-court identification made by <span style="background:#F1E1C9;padding:0 4px;border-radius:3px">Dana Whitfield</span>…</p>
+</div>
+
+<div style="position:relative;padding-top:44px">
+<span aria-hidden="true" style="position:absolute;left:0;top:0;width:12px;height:12px;box-sizing:border-box;border-radius:50%;border:2px solid #7E5226;background:#F3F0E8"></span>
+<p class="mono" style="margin:0 0 18px;font-size:11px;letter-spacing:.16em;color:#6B665D">03 · SUBPOENA</p>
+<p style="margin:0;font-family:Newsreader,Georgia,serif;font-size:17px;line-height:1.55;color:#2E2C28">To <span style="background:#F1E1C9;padding:0 4px;border-radius:3px">Dana Whitfield</span>: you are commanded to appear on November 18 at 9:30 a.m.</p>
+</div>
+
+<div style="position:relative;padding-top:44px">
+<span aria-hidden="true" style="position:absolute;left:0;top:0;width:12px;height:12px;box-sizing:border-box;border-radius:50%;background:#7E5226"></span>
+<p class="mono" style="margin:0 0 18px;font-size:11px;letter-spacing:.16em;color:#6B665D">04 · JURY INSTRUCTION</p>
+<p style="margin:0;font-family:Newsreader,Georgia,serif;font-size:17px;line-height:1.55;color:#2E2C28">In weighing the identification testimony of <span style="background:#F1E1C9;padding:0 4px;border-radius:3px">Dana Whitfield</span>, you should consider all the facts and circumstances…</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- ============ PLATFORM (interactive) ============ -->
+<section id="platform" class="sec" style="padding:40px 0 160px">
+<div class="wrap plat">
+<div>
+<p class="mono" style="margin:0 0 20px;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:#7E5226">The platform</p>
+<h2 style="margin:0 0 20px;font-size:clamp(36px,3.8vw,54px);line-height:1.02;letter-spacing:-.035em;font-weight:500">Three modules. <span class="serif">One case.</span></h2>
+<p style="margin:0 0 48px;font-size:16px;line-height:1.65;color:#4F4B44;max-width:40ch">Use them together, or start with one alongside the systems you already run.</p>
+<div style="border-bottom:1px solid #D6CFC1">
+<button class="tab" type="button" data-tab="0" aria-pressed="true">
+<span class="bar" aria-hidden="true"></span>
+<span class="mono kick" style="display:block;font-size:11px;letter-spacing:.16em">01 · CASE MANAGEMENT</span>
+<span class="ttl" style="display:block;margin-top:10px;font-size:22px;letter-spacing:-.02em;font-weight:500">From the first call to the courtroom.</span>
+<span class="desc" style="margin-top:10px;font-size:15px;line-height:1.6;color:#4F4B44;max-width:40ch">Intake, the case file and the court calendar in one place. Court dates checked against the clerk’s record, discovery tracked from request to tender.</span>
+</button>
+<button class="tab" type="button" data-tab="1" aria-pressed="false">
+<span class="bar" aria-hidden="true"></span>
+<span class="mono kick" style="display:block;font-size:11px;letter-spacing:.16em">02 · DOCUMENT BUILDER</span>
+<span class="ttl" style="display:block;margin-top:10px;font-size:22px;letter-spacing:-.02em;font-weight:500">Court documents built from the case.</span>
+<span class="desc" style="margin-top:10px;font-size:15px;line-height:1.6;color:#4F4B44;max-width:40ch">Charges, jury instructions, motions, orders and subpoenas, drafted from the case file and checked against the official text.</span>
+</button>
+<button class="tab" type="button" data-tab="2" aria-pressed="false">
+<span class="bar" aria-hidden="true"></span>
+<span class="mono kick" style="display:block;font-size:11px;letter-spacing:.16em">03 · EVIDENCE</span>
+<span class="ttl" style="display:block;margin-top:10px;font-size:22px;letter-spacing:-.02em;font-weight:500">Evidence ready before trial is.</span>
+<span class="desc" style="margin-top:10px;font-size:15px;line-height:1.6;color:#4F4B44;max-width:40ch">Open the case’s evidence from your digital evidence platform. Clip video, redact documents and add Bates numbers in one pass.</span>
+</button>
+
 </div>
 </div>
 
-<!-- Modules -->
-<section id="modules" style="max-width: 1400px; margin: 0 auto; padding: clamp(80px, 10vw, 160px) clamp(16px, 4vw, 56px) 40px">
-<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr)); gap: 32px 96px; align-items: end">
-<div style="display: flex; flex-direction: column; gap: 20px">
-<p style="margin: 0; font-family: 'Geist Mono', ui-monospace, monospace; font-size: 12px; letter-spacing: .18em; text-transform: uppercase; color: var(--accent)">The suite</p>
-<h2 style="margin: 0; font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: clamp(40px, 4.6vw, 68px); line-height: 1; letter-spacing: -.02em">One foundation for the whole case.</h2>
+<div style="position:relative">
+<div class="deco" aria-hidden="true" style="position:absolute;inset:40px -24px -24px 40px;border:1px solid #D6CFC1;border-radius:28px"></div>
+<div style="position:relative;background:#FBF9F4;border:1px solid #D6CFC1;border-radius:24px;overflow:hidden;box-shadow:0 40px 80px -40px rgba(84,64,32,.35)">
+
+<!-- Screen: case management -->
+<div class="screen" data-screen="0">
+<div class="rise">
+<div style="display:flex;justify-content:space-between;align-items:center;padding:14px 20px;border-bottom:1px solid #E3DDD0;background:#F6F3EC">
+<span class="mono" style="font-size:11px;letter-spacing:.16em;color:#4F4B44">ARMATURE / CASE MANAGEMENT</span>
+<span class="mono" style="font-size:11px;color:#6B665D">TUE 11/18 · 9:12 AM</span>
 </div>
-<p style="margin: 0; font-size: 17px; line-height: 1.7; color: #A39C91; max-width: 58ch">Separate modules built on the same file: case management, document drafting and management, evidence and jury preparation and presentation. Use them as one suite, or standalone tools alongside the systems you already use.</p>
+<div class="appgrid" style="min-height:520px">
+<div class="side mono" style="border-right:1px solid #E3DDD0;padding:20px 16px;display:flex;flex-direction:column;gap:4px;font-size:11px;letter-spacing:.12em">
+<span style="padding:9px 10px;border-radius:8px;background:#161512;color:#F3F0E8">TODAY</span>
+<span style="padding:9px 10px;color:#4F4B44">CASES</span>
+<span style="padding:9px 10px;color:#4F4B44">CALENDAR</span>
+<span style="padding:9px 10px;color:#4F4B44">DISCOVERY</span>
+<span style="padding:9px 10px;color:#4F4B44;display:flex;justify-content:space-between">INTAKE <span style="color:#7E5226">3</span></span>
+</div>
+<div style="padding:20px;border-right:1px solid #E3DDD0">
+<div style="display:flex;justify-content:space-between;margin-bottom:14px"><span style="font-size:15px;font-weight:500">Room 302</span><span class="mono" style="font-size:11px;color:#6B665D">CALL 9:30</span></div>
+<div style="display:grid;gap:8px">
+<div style="display:flex;justify-content:space-between;gap:10px;padding:13px 14px;border:1px solid #E3DDD0;border-radius:12px;font-size:14px"><span><span class="mono" style="color:#6B665D;margin-right:8px">03</span>Lindqvist</span><span class="mono" style="font-size:10px;color:#6B665D">CONT. 12/02</span></div>
+<div style="padding:13px 14px;border:1px solid #7E5226;border-radius:12px;background:#F4EADC;font-size:14px;font-weight:500;display:flex;justify-content:space-between;gap:10px"><span><span class="mono" style="color:#7E5226;margin-right:8px">04</span>Castellano</span><span class="mono" style="font-size:10px;color:#7E5226;display:flex;align-items:center;gap:6px"><span class="breathe" style="width:6px;height:6px;border-radius:50%;background:#7E5226"></span>CALLED</span></div>
+<div style="display:flex;justify-content:space-between;gap:10px;padding:13px 14px;border:1px solid #E3DDD0;border-radius:12px;font-size:14px"><span><span class="mono" style="color:#6B665D;margin-right:8px">05</span>Okonkwo</span><span class="mono" style="font-size:10px;color:#6B665D">UP NEXT</span></div>
+<div style="display:flex;justify-content:space-between;gap:10px;padding:13px 14px;border:1px solid #E3DDD0;border-radius:12px;font-size:14px"><span><span class="mono" style="color:#6B665D;margin-right:8px">06</span>Haverkamp</span><span class="mono" style="font-size:10px;color:#6B665D">WAITING</span></div>
+<div style="display:flex;justify-content:space-between;gap:10px;padding:13px 14px;border:1px solid #E3DDD0;border-radius:12px;font-size:14px"><span><span class="mono" style="color:#6B665D;margin-right:8px">07</span>Szymanski</span><span class="mono" style="font-size:10px;color:#6B665D">WAITING</span></div>
+</div>
+</div>
+<div style="padding:20px">
+<p class="mono" style="margin:0;font-size:11px;letter-spacing:.14em;color:#6B665D">26 CR 04417</p>
+<p style="margin:6px 0 14px;font-size:19px;font-weight:500;letter-spacing:-.01em">Castellano</p>
+<div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:20px">
+<span class="mono" style="font-size:10px;letter-spacing:.08em;padding:5px 8px;border-radius:6px;border:1px solid #E3DDD0">DISCOVERY TENDERED</span>
+<span class="mono" style="font-size:10px;letter-spacing:.08em;padding:5px 8px;border-radius:6px;border:1px solid #E3DDD0">OFFER OPEN</span>
+</div>
+<div style="display:grid;grid-template-columns:14px minmax(0,1fr);row-gap:14px;column-gap:12px;font-size:13px">
+<span style="width:8px;height:8px;margin-top:4px;border-radius:50%;border:1.5px solid #6B665D"></span><span>Arrest <span class="mono" style="color:#6B665D;font-size:11px;margin-left:6px">08/30</span></span>
+<span style="width:8px;height:8px;margin-top:4px;border-radius:50%;border:1.5px solid #6B665D"></span><span>Intake approved <span class="mono" style="color:#6B665D;font-size:11px;margin-left:6px">09/14</span></span>
+<span style="width:8px;height:8px;margin-top:4px;border-radius:50%;border:1.5px solid #6B665D"></span><span>Discovery tendered <span class="mono" style="color:#6B665D;font-size:11px;margin-left:6px">10/02</span></span>
+<span style="width:8px;height:8px;margin-top:4px;border-radius:50%;background:#7E5226"></span><span style="font-weight:500">Jury trial <span class="mono" style="color:#7E5226;font-size:11px;margin-left:6px">11/18 · MATCHES CLERK</span></span>
+</div>
+<div style="margin-top:24px;padding:14px;border-radius:12px;background:#161512;color:#F3F0E8">
+<p class="mono" style="margin:0;font-size:10px;letter-spacing:.14em;color:#D9A973">ALERT · 2 HRS AGO</p>
+<p style="margin:6px 0 0;font-size:13px;line-height:1.5">New arrest on a pending case. PTR hearing set for 1:30 PM.</p>
+</div>
+</div>
+</div>
+</div>
 </div>
 
-<!-- 01 Case Management -->
-<article style="margin-top: clamp(64px, 8vw, 120px); padding-top: 40px; border-top: 1px solid rgba(236,231,223,.1); display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 440px), 1fr)); gap: 48px 96px; align-items: center">
-<div style="display: flex; flex-direction: column; gap: 18px; max-width: 540px">
-<p style="margin: 0; font-family: 'Geist Mono', ui-monospace, monospace; font-size: 12px; letter-spacing: .14em; color: #A39C91">01 &nbsp;·&nbsp; CASE MANAGEMENT</p>
-<h3 style="margin: 0; font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: clamp(32px, 3.2vw, 46px); line-height: 1.05; letter-spacing: -.015em">From the first call to the courtroom.</h3>
-<p style="margin: 0; font-size: 16px; line-height: 1.7; color: #A39C91">Intake, the case file and the court calendar in one place, with each person's work laid out by priority.</p>
-<ul style="margin: 12px 0 0; padding: 0; list-style: none; display: grid; gap: 0; font-size: 15px; color: #CFC9C0">
-<li style="padding: 12px 0; border-top: 1px solid rgba(236,231,223,.08)">Tasks for every role, ranked now, this week and later</li>
-<li style="padding: 12px 0; border-top: 1px solid rgba(236,231,223,.08)">Alerts for what can't wait, like a new arrest on a pending case</li>
-<li style="padding: 12px 0; border-top: 1px solid rgba(236,231,223,.08)">Court dates checked against the clerk's record</li>
-<li style="padding: 12px 0; border-top: 1px solid rgba(236,231,223,.08); border-bottom: 1px solid rgba(236,231,223,.08)">Discovery tracked from request to tender or receipt</li>
-</ul>
+<!-- Screen: documents -->
+<div class="screen" data-screen="1" hidden>
+<div class="rise">
+<div style="display:flex;justify-content:space-between;align-items:center;padding:14px 20px;border-bottom:1px solid #E3DDD0;background:#F6F3EC">
+<span class="mono" style="font-size:11px;letter-spacing:.16em;color:#4F4B44">ARMATURE / DOCUMENT BUILDER</span>
+<span class="mono" style="font-size:11px;color:#6B665D">JURY INSTRUCTIONS · 26 CR 04417</span>
 </div>
-<div aria-hidden="true" style="border-radius: 28px; padding: clamp(20px, 3vw, 36px); background: #161513; border: 1px solid rgba(236,231,223,.08); box-shadow: inset 0 1px 0 rgba(255,255,255,.04), 0 30px 60px -36px rgba(0,0,0,.7)">
-<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 8px; padding-bottom: 18px; border-bottom: 1px solid rgba(236,231,223,.08)">
-<span style="font-family: 'Instrument Serif', Georgia, serif; font-size: 26px">In court · Room 302</span>
-<span style="display: inline-flex; align-items: center; gap: 8px; font-family: 'Geist Mono', ui-monospace, monospace; font-size: 11px; letter-spacing: .14em; color: #A39C91"><span class="pulse" style="width: 6px; height: 6px; border-radius: 50%; background: var(--accent); display: inline-block"></span>CALL · 9:30 AM</span>
+<div class="docgrid" style="min-height:520px">
+<div style="padding:20px;border-right:1px solid #E3DDD0">
+<p class="mono" style="margin:0 0 12px;font-size:11px;letter-spacing:.14em;color:#6B665D">PACKET · 14 INSTRUCTIONS</p>
+<div style="display:grid;gap:2px;font-size:13px">
+<div style="display:flex;gap:10px;align-items:center;padding:10px;border-radius:8px"><span class="mono" style="color:#6B665D;width:24px">01</span>Function of the court and jury<span class="mono" style="margin-left:auto;font-size:10px;color:#6B665D">OK</span></div>
+<div style="display:flex;gap:10px;align-items:center;padding:10px;border-radius:8px"><span class="mono" style="color:#6B665D;width:24px">04</span>Presumption of innocence<span class="mono" style="margin-left:auto;font-size:10px;color:#6B665D">OK</span></div>
+<div style="display:flex;gap:10px;align-items:center;padding:10px;border-radius:8px"><span class="mono" style="color:#6B665D;width:24px">07</span>Credibility of witnesses<span class="mono" style="margin-left:auto;font-size:10px;color:#6B665D">OK</span></div>
+<div style="display:flex;gap:10px;align-items:center;padding:10px;border-radius:8px;background:#F4EADC;font-weight:500"><span class="mono" style="color:#7E5226;width:24px">12</span>Issues in armed robbery<span class="mono" style="margin-left:auto;font-size:10px;color:#7E5226">EDITING</span></div>
+<div style="display:flex;gap:10px;align-items:center;padding:10px;border-radius:8px"><span class="mono" style="color:#6B665D;width:24px">13</span>Definition of firearm<span class="mono" style="margin-left:auto;font-size:10px;color:#6B665D">OK</span></div>
+<div style="display:flex;gap:10px;align-items:center;padding:10px;border-radius:8px;color:#4F4B44"><span class="mono" style="color:#6B665D;width:24px">+</span>Lesser included: robbery<span class="mono" style="margin-left:auto;font-size:10px;color:#7E5226">SUGGESTED</span></div>
 </div>
-<div style="display: grid; gap: 8px; margin-top: 18px">
-<div style="display: grid; grid-template-columns: 34px minmax(0, 1fr) auto; align-items: center; gap: 12px; padding: 12px 16px; border-radius: 14px; background: #1A1916; opacity: .6">
-<span style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: 12px; color: #A39C91">03</span>
-<span style="font-size: 14px">People v. Lindqvist</span>
-<span style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: 11px; color: #A39C91">CONTINUED · 12/02</span>
 </div>
-<div style="padding: 16px; border-radius: 18px; background: #1E1C19; border: 1px solid rgba(200,164,110,.3)">
-<div style="display: grid; grid-template-columns: 34px minmax(0, 1fr) auto; align-items: center; gap: 12px">
-<span style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: 12px; color: var(--accent)">04</span>
-<span style="font-size: 15px; font-weight: 500">People v. Castellano</span>
-<span style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: 11px; letter-spacing: .1em; color: var(--accent)">CALLED</span>
+<div style="padding:28px;background:#EFEBE2">
+<div style="background:#FFFDF8;border:1px solid #E3DDD0;border-radius:4px;padding:36px 34px;box-shadow:0 18px 30px -24px rgba(84,64,32,.4)">
+<p class="mono" style="margin:0;font-size:10px;letter-spacing:.16em;color:#6B665D;text-align:center">INSTRUCTION NO. 12</p>
+<p style="margin:12px 0 18px;font-family:Newsreader,Georgia,serif;font-size:19px;text-align:center">Issues in Armed Robbery</p>
+<p style="margin:0;font-family:Newsreader,Georgia,serif;font-size:14.5px;line-height:1.7;color:#2E2C28">To sustain the charge of armed robbery, the following propositions must be proved:</p>
+<p style="margin:10px 0 0;font-family:Newsreader,Georgia,serif;font-size:14.5px;line-height:1.7;color:#2E2C28">First, that the defendant took property from the person or presence of <span style="background:#F1E1C9;padding:0 3px;border-radius:3px">Renata Toll</span>; and</p>
+<p style="margin:10px 0 0;font-family:Newsreader,Georgia,serif;font-size:14.5px;line-height:1.7;color:#2E2C28">Second, that the defendant did so by the use of force or by threatening the imminent use of force; and</p>
+<p style="margin:10px 0 0;font-family:Newsreader,Georgia,serif;font-size:14.5px;line-height:1.7;color:#2E2C28">Third, that the defendant carried on or about his person a <span style="background:#F1E1C9;padding:0 3px;border-radius:3px">firearm</span> at the time of the taking.</p>
 </div>
-<div style="margin: 14px 0 0 46px; display: grid; gap: 10px">
-<div style="display: flex; flex-wrap: wrap; gap: 6px 18px; font-family: 'Geist Mono', ui-monospace, monospace; font-size: 11px; color: #A39C91">
-<span>26 CR 04417</span><span>DISCOVERY TENDERED</span><span>OFFER OPEN</span>
-</div>
-<div style="display: flex; flex-wrap: wrap; gap: 6px">
-<span style="padding: 7px 12px; border-radius: 999px; border: 1px solid rgba(236,231,223,.14); font-size: 12px; color: #CFC9C0">Continued</span>
-<span style="padding: 7px 12px; border-radius: 999px; background: var(--accent); color: #0E0D0C; font-size: 12px; font-weight: 500">Trial set</span>
-<span style="padding: 7px 12px; border-radius: 999px; border: 1px solid rgba(236,231,223,.14); font-size: 12px; color: #CFC9C0">Plea</span>
-<span style="padding: 7px 12px; border-radius: 999px; border: 1px solid rgba(236,231,223,.14); font-size: 12px; color: #CFC9C0">Motion</span>
-</div>
-<div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px; padding-top: 10px; border-top: 1px solid rgba(236,231,223,.08); font-size: 13px">
-<span>Next date <span style="font-family: 'Geist Mono', ui-monospace, monospace; color: #ECE7DF">11/18 · JURY TRIAL</span></span>
-<span style="display: inline-flex; align-items: center; gap: 6px; color: #A39C91"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg>Matches clerk</span>
+<div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:16px">
+<span class="mono" style="font-size:10px;letter-spacing:.08em;padding:6px 9px;border-radius:6px;background:#161512;color:#D9A973">MATCHES PATTERN TEXT</span>
+<span class="mono" style="font-size:10px;letter-spacing:.08em;padding:6px 9px;border-radius:6px;border:1px solid #C9BFAE;color:#4F4B44">FILLED FROM CASE FILE</span>
+<span class="mono" style="font-size:10px;letter-spacing:.08em;padding:6px 9px;border-radius:6px;border:1px solid #C9BFAE;color:#4F4B44">SEND TO JURY SCREEN</span>
 </div>
 </div>
 </div>
-<div style="display: grid; grid-template-columns: 34px minmax(0, 1fr) auto; align-items: center; gap: 12px; padding: 12px 16px; border-radius: 14px; background: #1A1916">
-<span style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: 12px; color: #A39C91">05</span>
-<span style="font-size: 14px">People v. Okonkwo</span>
-<span style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: 11px; color: #A39C91">UP NEXT</span>
-</div>
-<div style="display: grid; grid-template-columns: 34px minmax(0, 1fr) auto; align-items: center; gap: 12px; padding: 12px 16px; border-radius: 14px; background: #1A1916">
-<span style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: 12px; color: #A39C91">06</span>
-<span style="font-size: 14px">People v. Haverkamp</span>
-<span style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: 11px; color: #A39C91">WAITING</span>
 </div>
 </div>
-</div>
-</article>
 
-<!-- 02 Evidence and Presentation (visual first, zig-zag) -->
-<article style="margin-top: clamp(64px, 8vw, 120px); padding-top: 40px; border-top: 1px solid rgba(236,231,223,.1); display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 440px), 1fr)); gap: 48px 96px; align-items: center">
-<div aria-hidden="true" style="border-radius: 28px; padding: clamp(16px, 2.4vw, 28px); background: #161513; border: 1px solid rgba(236,231,223,.08); box-shadow: inset 0 1px 0 rgba(255,255,255,.04), 0 30px 60px -36px rgba(0,0,0,.7)">
-<div style="display: flex; justify-content: space-between; align-items: center; padding: 4px 4px 16px">
-<span style="display: inline-flex; align-items: center; gap: 8px; font-family: 'Geist Mono', ui-monospace, monospace; font-size: 11px; letter-spacing: .14em; color: #A39C91"><span class="pulse" style="width: 6px; height: 6px; border-radius: 50%; background: var(--accent); display: inline-block"></span>JURY SCREEN · LIVE</span>
-<span style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: 11px; color: #A39C91">00:14:32.08</span>
+<!-- Screen: evidence -->
+<div class="screen" data-screen="2" hidden>
+<div class="rise">
+<div style="display:flex;justify-content:space-between;align-items:center;padding:14px 20px;border-bottom:1px solid #E3DDD0;background:#F6F3EC">
+<span class="mono" style="font-size:11px;letter-spacing:.16em;color:#4F4B44">ARMATURE / EVIDENCE</span>
+<span class="mono" style="font-size:11px;color:#6B665D">SYNCED FROM EVIDENCE PLATFORM</span>
 </div>
-<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px">
-<div style="position: relative; aspect-ratio: 4 / 3; border-radius: 16px; background: #1C1B18; overflow: hidden">
-<svg viewBox="0 0 200 150" width="100%" height="100%" fill="none" style="display: block">
-<path d="M0 40H200M0 95H200M60 0V150M140 0V150" stroke="rgba(236,231,223,.07)" stroke-width="8"></path>
-<path d="M18 128 C60 120 70 70 104 66 S150 34 182 22" stroke="var(--accent)" stroke-width="2" stroke-dasharray="4 4"></path>
-<circle cx="18" cy="128" r="4" fill="#ECE7DF"></circle>
-<circle class="pulse" cx="182" cy="22" r="5" fill="var(--accent)"></circle>
+<div style="padding:20px;min-height:520px;box-sizing:border-box;display:grid;gap:16px">
+<div style="border-radius:14px;background:#1E1C18;aspect-ratio:16/7;position:relative;overflow:hidden">
+<img src="images/body-cam.jpg" alt="Body-worn camera still at night: a dark sedan parked on a wet residential street" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 55%;display:block">
+<div aria-hidden="true" style="position:absolute;inset:0;background:linear-gradient(to bottom,rgba(15,14,12,.55),rgba(15,14,12,0) 28%,rgba(15,14,12,0) 70%,rgba(15,14,12,.6))"></div>
+<span class="mono" style="position:absolute;left:14px;top:12px;font-size:10px;letter-spacing:.14em;color:#D9A973">BODY CAM 2 · OFC. REYES</span>
+<span class="mono" style="position:absolute;right:14px;top:12px;font-size:10px;color:#BDB5A6">00:14:32.08</span>
+<div style="position:absolute;left:14px;right:14px;bottom:14px;height:6px;border-radius:3px;background:#3A362F">
+<div style="position:absolute;left:58%;width:14%;top:0;bottom:0;border-radius:3px;background:#D9A973"></div>
+<div style="position:absolute;left:62%;top:-5px;width:2px;height:16px;background:#F3F0E8"></div>
+</div>
+</div>
+<div style="display:grid;gap:0;border-top:1px solid #E3DDD0">
+<div style="display:grid;grid-template-columns:60px minmax(0,1fr) auto;gap:14px;padding:12px 4px;border-bottom:1px solid #E3DDD0;font-size:13px;align-items:center"><span class="mono" style="color:#6B665D">EX. 12</span><span>Photo array</span><span class="mono" style="font-size:10px;color:#6B665D">BATES 0398–0401 · REDACTED</span></div>
+<div style="display:grid;grid-template-columns:60px minmax(0,1fr) auto;gap:14px;padding:12px 4px;border-bottom:1px solid #E3DDD0;font-size:13px;align-items:center"><span class="mono" style="color:#6B665D">EX. 13</span><span>911 call audio</span><span class="mono" style="font-size:10px;color:#6B665D">TRANSCRIPT SYNCED</span></div>
+<div style="display:grid;grid-template-columns:60px minmax(0,1fr) auto;gap:14px;padding:12px 4px;border-bottom:1px solid #E3DDD0;font-size:13px;align-items:center;background:#F4EADC;font-weight:500"><span class="mono" style="color:#7E5226">EX. 14</span><span>Body cam clip, 00:14:20–00:14:45</span><span class="mono" style="font-size:10px;color:#7E5226">CLIPPED · READY</span></div>
+<div style="display:grid;grid-template-columns:60px minmax(0,1fr) auto;gap:14px;padding:12px 4px;border-bottom:1px solid #E3DDD0;font-size:13px;align-items:center"><span class="mono" style="color:#6B665D">EX. 15</span><span>Lab report</span><span class="mono" style="font-size:10px;color:#6B665D">BATES 0412 · REDACTED</span></div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</section>
+
+<!-- ============ IN COURT ============ -->
+<section id="court" class="sec" style="padding:160px 0;background:#161512;color:#F3F0E8;overflow:hidden">
+<div class="wrap jury">
+<div style="position:relative">
+<div aria-hidden="true" style="position:absolute;inset:-60px;background:radial-gradient(ellipse at 40% 50%,rgba(217,169,115,.12),rgba(22,21,18,0) 65%)"></div>
+<div style="position:relative;border-radius:20px;background:#0F0E0C;border:1px solid #2D2A25;padding:14px;box-shadow:inset 0 1px 0 rgba(255,255,255,.04),0 60px 100px -50px rgba(0,0,0,.8)">
+<div style="display:flex;justify-content:space-between;align-items:center;padding:6px 8px 14px">
+<span class="mono" style="font-size:11px;letter-spacing:.16em;color:#D9A973;display:flex;align-items:center;gap:8px"><span class="breathe" style="width:7px;height:7px;border-radius:50%;background:#D9A973"></span>JURY SCREEN · LIVE</span>
+<span class="mono" style="font-size:11px;color:#A9A193">EXHIBIT 14 · MAP 3</span>
+</div>
+<div style="display:grid;grid-template-columns:minmax(0,2fr) minmax(0,1fr);gap:10px">
+<div style="border-radius:12px;background:#1C1A16;aspect-ratio:4/3;position:relative;overflow:hidden">
+<svg viewBox="0 0 400 300" aria-hidden="true" style="position:absolute;inset:0;width:100%;height:100%">
+<g stroke="#2A2722" stroke-width="10" fill="none"><path d="M0 70 H400"></path><path d="M0 200 H400"></path><path d="M90 0 V300"></path><path d="M250 0 V300"></path><path d="M340 0 V300"></path></g>
+<g stroke="#24211D" stroke-width="4" fill="none"><path d="M0 135 H400"></path><path d="M170 0 V300"></path></g>
+<path class="route" pathLength="100" d="M30 250 L90 250 L90 200 L170 200 L250 200 L250 70 L340 70 L340 20" stroke="#D9A973" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"></path>
+<circle r="6" fill="#F3F0E8"><animateMotion dur="8s" repeatCount="indefinite" keyTimes="0;0.7;1" keyPoints="0;1;1" calcMode="linear" path="M30 250 L90 250 L90 200 L170 200 L250 200 L250 70 L340 70 L340 20"></animateMotion></circle>
+<circle cx="250" cy="200" r="10" fill="none" stroke="#D9A973" stroke-opacity=".6"></circle>
+<text x="258" y="226" font-family="Geist Mono, monospace" font-size="10" letter-spacing="1" fill="#A9A193">ARCHER AVE · 9:41 PM</text>
 </svg>
-<span style="position: absolute; left: 10px; bottom: 10px; font-family: 'Geist Mono', ui-monospace, monospace; font-size: 10px; letter-spacing: .1em; color: #A39C91">ROUTE · 9:41 PM</span>
 </div>
-<div style="position: relative; aspect-ratio: 4 / 3; border-radius: 16px; background: linear-gradient(160deg, #24221E, #151412); overflow: hidden; display: grid; place-items: center">
-<svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#ECE7DF" stroke-width="1.5" stroke-linejoin="round"><path d="M8 5.5v13l10.5-6.5z"></path></svg>
-<span style="position: absolute; right: 10px; top: 10px; transform: rotate(-4deg); padding: 6px 10px; border-radius: 6px; background: #ECE7DF; color: #0E0D0C; font-family: 'Geist Mono', ui-monospace, monospace; font-size: 10px; font-weight: 500; letter-spacing: .12em">EXHIBIT 14</span>
-<span style="position: absolute; left: 22%; top: 30%; width: 34%; height: 36%; border: 2px solid var(--accent); border-radius: 10px"></span>
+<div style="display:grid;grid-template-rows:minmax(0,1fr) auto;gap:10px">
+<div style="border-radius:12px;background:#1C1A16;padding:14px;display:flex;flex-direction:column;justify-content:space-between;gap:12px">
+<span class="mono" style="font-size:10px;letter-spacing:.14em;color:#D9A973">TRANSCRIPT · 00:14:32</span>
+<span style="font-family:Newsreader,Georgia,serif;font-size:16px;line-height:1.45;color:#EDE8DD">“…the car turns left onto Archer, headlights off.”</span>
+</div>
+<div class="mono" style="border-radius:12px;border:1px solid #2D2A25;padding:12px;font-size:10px;letter-spacing:.1em;color:#A9A193;line-height:1.8">CALLOUT ON<br>FREEZE · OFF</div>
 </div>
 </div>
-<div style="position: relative; margin-top: 12px; height: 54px; border-radius: 12px; background: #1A1916; overflow: hidden">
-<svg viewBox="0 0 400 54" width="100%" height="100%" preserveAspectRatio="none" style="display: block"><path d="M0 27 L12 21 L20 33 L30 15 L40 37 L52 24 L64 30 L76 12 L88 41 L100 25 L114 29 L126 18 L138 36 L150 26 L162 22 L176 34 L188 16 L200 38 L214 27 L226 21 L240 33 L252 19 L266 35 L280 26 L292 23 L306 31 L318 17 L332 37 L346 25 L360 29 L374 20 L388 32 L400 27" stroke="rgba(236,231,223,.28)" stroke-width="1.5" fill="none"></path></svg>
-<span class="head" style="position: absolute; top: 0; bottom: 0; left: 6%; width: 2px; background: var(--accent)"></span>
+<div style="margin:14px 8px 6px;height:4px;border-radius:2px;background:#2D2A25;position:relative"><div style="position:absolute;left:0;top:0;bottom:0;width:61%;border-radius:2px;background:#D9A973"></div></div>
 </div>
-<p style="margin: 12px 4px 0; font-size: 13px; color: #A39C91; font-style: italic; font-family: 'Instrument Serif', Georgia, serif; font-size: 17px">"…the car turns left onto Archer, headlights off."</p>
 </div>
-<div style="display: flex; flex-direction: column; gap: 18px; max-width: 540px">
-<p style="margin: 0; font-family: 'Geist Mono', ui-monospace, monospace; font-size: 12px; letter-spacing: .14em; color: #A39C91">02 &nbsp;·&nbsp; EVIDENCE AND PRESENTATION</p>
-<h3 style="margin: 0; font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: clamp(32px, 3.2vw, 46px); line-height: 1.05; letter-spacing: -.015em">Prepare the evidence. Show it in court.</h3>
-<p style="margin: 0; font-size: 16px; line-height: 1.7; color: #A39C91">Open the case's evidence from your digital evidence platform, build the trial file, and present it from the same app.</p>
-<ul style="margin: 12px 0 0; padding: 0; list-style: none; display: grid; font-size: 15px; color: #CFC9C0">
-<li style="padding: 12px 0; border-top: 1px solid rgba(236,231,223,.08)">Clip video, redact documents and add Bates numbers</li>
-<li style="padding: 12px 0; border-top: 1px solid rgba(236,231,223,.08)">Map and timeline, with video and transcripts in sync</li>
-<li style="padding: 12px 0; border-top: 1px solid rgba(236,231,223,.08)">Present to the jury on its own screen, then export a verified jury package</li>
-<li style="padding: 12px 0; border-top: 1px solid rgba(236,231,223,.08); border-bottom: 1px solid rgba(236,231,223,.08)">Exhibits side by side, with callouts and markings</li>
+<div>
+<p class="mono" style="margin:0 0 20px;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:#D9A973">In court</p>
+<h2 style="margin:0;font-size:clamp(36px,3.8vw,56px);line-height:1.02;letter-spacing:-.035em;font-weight:500">Then show it <span class="serif" style="color:#D9A973">to the jury.</span></h2>
+<p style="margin:24px 0 0;font-size:17px;line-height:1.65;color:#BDB5A6;max-width:40ch">Present from the same app you prepared in, on the jury's own screen. When the case goes back, the jury package goes with it.</p>
+<ul style="list-style:none;margin:40px 0 0;padding:0;border-bottom:1px solid #2D2A25">
+<li style="display:flex;gap:16px;padding:16px 0;border-top:1px solid #2D2A25;font-size:15px;color:#EDE8DD"><span class="mono" style="color:#D9A973;font-size:12px;padding-top:2px">→</span>Map and timeline, synced to video and transcript</li>
+<li style="display:flex;gap:16px;padding:16px 0;border-top:1px solid #2D2A25;font-size:15px;color:#EDE8DD"><span class="mono" style="color:#D9A973;font-size:12px;padding-top:2px">→</span>Exhibits side by side, with callouts and markings</li>
+<li style="display:flex;gap:16px;padding:16px 0;border-top:1px solid #2D2A25;font-size:15px;color:#EDE8DD"><span class="mono" style="color:#D9A973;font-size:12px;padding-top:2px">→</span>A verified jury package on export</li>
 </ul>
 </div>
-</article>
+</div>
+</section>
 
-<!-- 03 Document Builder -->
-<article style="margin-top: clamp(64px, 8vw, 120px); padding-top: 40px; border-top: 1px solid rgba(236,231,223,.1); display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 440px), 1fr)); gap: 48px 96px; align-items: center">
-<div style="display: flex; flex-direction: column; gap: 18px; max-width: 540px">
-<p style="margin: 0; font-family: 'Geist Mono', ui-monospace, monospace; font-size: 12px; letter-spacing: .14em; color: #A39C91">03 &nbsp;·&nbsp; DOCUMENT BUILDER</p>
-<h3 style="margin: 0; font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: clamp(32px, 3.2vw, 46px); line-height: 1.05; letter-spacing: -.015em">Court documents built from the case.</h3>
-<p style="margin: 0; font-size: 16px; line-height: 1.7; color: #A39C91">Charges, jury instructions, motions, orders and subpoenas, drafted from the case and checked against the official text.</p>
-<ul style="margin: 12px 0 0; padding: 0; list-style: none; display: grid; font-size: 15px; color: #CFC9C0">
-<li style="padding: 12px 0; border-top: 1px solid rgba(236,231,223,.08)">Counts checked against the full statute, with lesser included offenses</li>
-<li style="padding: 12px 0; border-top: 1px solid rgba(236,231,223,.08)">Jury instructions suggested from the facts and the trial record</li>
-<li style="padding: 12px 0; border-top: 1px solid rgba(236,231,223,.08)">Every case cited is checked, linked and watched</li>
-<li style="padding: 12px 0; border-top: 1px solid rgba(236,231,223,.08); border-bottom: 1px solid rgba(236,231,223,.08)">Your office's clauses, signature blocks and defaults</li>
-</ul>
-</div>
-<div aria-hidden="true" style="position: relative; border-radius: 28px; padding: clamp(28px, 4vw, 52px); background: #181715; border: 1px solid rgba(236,231,223,.08); box-shadow: inset 0 1px 0 rgba(255,255,255,.04), 0 30px 60px -36px rgba(0,0,0,.7)">
-<p style="margin: 0; text-align: center; font-family: 'Geist Mono', ui-monospace, monospace; font-size: 11px; letter-spacing: .2em; color: #A39C91">INSTRUCTION NO. 12</p>
-<p style="margin: 6px 0 0; text-align: center; font-family: 'Instrument Serif', Georgia, serif; font-size: 22px">Issues in Armed Robbery</p>
-<p style="margin: 28px 0 0; font-family: 'Instrument Serif', Georgia, serif; font-size: 18px; line-height: 1.7; color: #A39C91">To sustain the charge of armed robbery, the following propositions must be proved:</p>
-<p style="margin: 12px 0 0; font-family: 'Instrument Serif', Georgia, serif; font-size: 18px; line-height: 1.7; color: #A39C91">First, that the defendant took property from the person or presence of Renata Toll; and</p>
-<p style="margin: 8px 0 0; font-family: 'Instrument Serif', Georgia, serif; font-size: 18px; line-height: 1.7; color: #A39C91">Second, that the defendant did so by the use of force or by threatening the imminent use of force; and</p>
-<p style="margin: 8px 0 0; font-family: 'Instrument Serif', Georgia, serif; font-size: 18px; line-height: 1.7; color: #A39C91">Third, that the defendant <span class="hl">carried on or about his person a firearm</span> at the time of the taking.</p>
-<div style="margin-top: 22px; display: grid; gap: 10px">
-<div style="height: 8px; width: 92%; border-radius: 4px; background: rgba(236,231,223,.07)"></div>
-<div style="height: 8px; width: 78%; border-radius: 4px; background: rgba(236,231,223,.07)"></div>
-<div style="height: 8px; width: 85%; border-radius: 4px; background: rgba(236,231,223,.07)"></div>
-</div>
-<div class="tool" style="position: absolute; right: clamp(16px, 3vw, 32px); top: 46%; display: grid; gap: 8px; padding: 12px; border-radius: 16px; background: rgba(36,34,30,.82); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,.1); box-shadow: inset 0 1px 0 rgba(255,255,255,.1), 0 20px 40px -20px rgba(0,0,0,.8); font-family: 'Geist Mono', ui-monospace, monospace; font-size: 11px; letter-spacing: .04em">
-<span style="display: inline-flex; align-items: center; gap: 8px; color: #ECE7DF"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg>Matches pattern text</span>
-<span style="color: #A39C91">Suggested from trial record</span>
-</div>
-</div>
-</article>
-
-<!-- Suite or module -->
-<div style="margin-top: clamp(80px, 9vw, 140px); display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 380px), 1fr)); border-radius: 28px; border: 1px solid rgba(236,231,223,.1); overflow: hidden">
-<div style="padding: clamp(28px, 4vw, 56px); display: flex; flex-direction: column; gap: 14px; background: #141311">
-<p style="margin: 0; font-family: 'Geist Mono', ui-monospace, monospace; font-size: 12px; letter-spacing: .14em; color: var(--accent)">AS A SUITE</p>
-<p style="margin: 0; font-family: 'Instrument Serif', Georgia, serif; font-size: clamp(26px, 2.4vw, 34px); line-height: 1.2">One sign-in and one case. Documents fill in from the case file, finished jury instructions go straight to the jury's screen, and setting a trial date sends out the witness subpoenas.</p>
-</div>
-<div style="padding: clamp(28px, 4vw, 56px); display: flex; flex-direction: column; gap: 14px; background: #0E0D0C; border-left: 1px solid rgba(236,231,223,.1)">
-<p style="margin: 0; font-family: 'Geist Mono', ui-monospace, monospace; font-size: 12px; letter-spacing: .14em; color: #A39C91">AS A MODULE</p>
-<p style="margin: 0; font-family: 'Instrument Serif', Georgia, serif; font-size: clamp(26px, 2.4vw, 34px); line-height: 1.2; color: #CFC9C0">Each module connects to your evidence platform and court records on its own. Armature Jury Instructions is also available by itself.</p>
+<!-- ============ PRINCIPLES ============ -->
+<section class="sec" style="padding:160px 0 150px">
+<div class="wrap">
+<h2 style="margin:0 0 72px;font-size:clamp(40px,5vw,76px);line-height:.98;letter-spacing:-.045em;font-weight:500">Prepared is a structure,<br><span class="serif" style="font-weight:300;color:#7E5226">not a feeling.</span></h2>
+<div style="border-bottom:1px solid #C9BFAE">
+<div class="line-row"><span class="big" style="font-size:clamp(26px,2.6vw,38px);letter-spacing:-.025em">The case, connected.</span><span style="font-size:15px;line-height:1.6;color:#4F4B44">Calls, charges, exhibits and decisions link to each other.</span></div>
+<div class="line-row"><span class="big" style="font-size:clamp(26px,2.6vw,38px);letter-spacing:-.025em">Work that holds up in court.</span><span style="font-size:15px;line-height:1.6;color:#4F4B44">Charges from the statutes, instructions from the official text, every change on the record.</span></div>
+<div class="line-row"><span class="big" style="font-size:clamp(26px,2.6vw,38px);letter-spacing:-.025em">AI drafts. Lawyers decide.</span><span style="font-size:15px;line-height:1.6;color:#4F4B44">Every suggestion shows its source. Nothing reaches the court without review.</span></div>
+<div class="line-row"><span class="big" style="font-size:clamp(26px,2.6vw,38px);letter-spacing:-.025em">Secure and on the record.</span><span style="font-size:15px;line-height:1.6;color:#4F4B44">Two-step sign-in, an audit trail on every action, evidence verified when it leaves.</span></div>
 </div>
 </div>
 </section>
 
-<!-- Approach -->
-<section id="approach" style="max-width: 1400px; margin: 0 auto; padding: clamp(80px, 10vw, 160px) clamp(16px, 4vw, 56px); display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 360px), 1fr)); gap: 48px 96px; align-items: start">
-<div style="display: flex; flex-direction: column; gap: 20px; position: sticky; top: 120px">
-<p style="margin: 0; font-family: 'Geist Mono', ui-monospace, monospace; font-size: 12px; letter-spacing: .18em; text-transform: uppercase; color: var(--accent)">Approach</p>
-<h2 style="margin: 0; font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: clamp(40px, 4.6vw, 68px); line-height: 1; letter-spacing: -.02em">Prepared is a&#160;structure,<br><em style="color: #A39C91; white-space: nowrap">not a feeling.</em></h2>
+<!-- ============ FOUNDER ============ -->
+<section id="founder" class="sec" style="padding:40px 0 170px">
+<div class="wrap two" style="align-items:center">
+<div style="position:relative;max-width:480px">
+<div class="deco" aria-hidden="true" style="position:absolute;inset:24px -24px -24px 24px;border:1px solid #7E5226;border-radius:22px"></div>
+<div style="position:relative;aspect-ratio:4/5;border-radius:22px;overflow:hidden;background:#D6CFC1">
+<img src="images/stacy-weber.jpg" alt="Stacy Weber, founder of Armature" style="width:100%;height:100%;object-fit:cover;object-position:50% 25%;display:block;filter:saturate(.85) contrast(1.02)">
+<div aria-hidden="true" style="position:absolute;inset:auto 0 0 0;height:40%;background:linear-gradient(to top,rgba(22,21,18,.55),rgba(22,21,18,0))"></div>
+<span class="mono" style="position:absolute;left:20px;bottom:18px;font-size:11px;letter-spacing:.16em;color:#F3F0E8">STACY WEBER · FOUNDER</span>
 </div>
-<ol style="margin: 0; padding: 0; list-style: none; display: grid">
-<li style="display: grid; grid-template-columns: 56px minmax(0, 1fr); gap: 16px; padding: 28px 0; border-top: 1px solid rgba(236,231,223,.1)">
-<span style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: 12px; color: var(--accent); padding-top: 8px">01</span>
-<div><h3 style="margin: 0; font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: 28px">The case, connected.</h3><p style="margin: 8px 0 0; font-size: 15px; line-height: 1.7; color: #A39C91; max-width: 56ch">Calls, charges, exhibits and decisions link to each other, so nothing is re-entered or reconstructed from memory.</p></div>
-</li>
-<li style="display: grid; grid-template-columns: 56px minmax(0, 1fr); gap: 16px; padding: 28px 0; border-top: 1px solid rgba(236,231,223,.1)">
-<span style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: 12px; color: var(--accent); padding-top: 8px">02</span>
-<div><h3 style="margin: 0; font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: 28px">Work that holds up in court.</h3><p style="margin: 8px 0 0; font-size: 15px; line-height: 1.7; color: #A39C91; max-width: 56ch">Charges come from the statutes and instructions from the official text, with every change on the record.</p></div>
-</li>
-<li style="display: grid; grid-template-columns: 56px minmax(0, 1fr); gap: 16px; padding: 28px 0; border-top: 1px solid rgba(236,231,223,.1)">
-<span style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: 12px; color: var(--accent); padding-top: 8px">03</span>
-<div><h3 style="margin: 0; font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: 28px">AI drafts. Lawyers decide.</h3><p style="margin: 8px 0 0; font-size: 15px; line-height: 1.7; color: #A39C91; max-width: 56ch">Every suggestion shows its source, and nothing reaches the court without review.</p></div>
-</li>
-<li style="display: grid; grid-template-columns: 56px minmax(0, 1fr); gap: 16px; padding: 28px 0; border-top: 1px solid rgba(236,231,223,.1); border-bottom: 1px solid rgba(236,231,223,.1)">
-<span style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: 12px; color: var(--accent); padding-top: 8px">04</span>
-<div><h3 style="margin: 0; font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: 28px">Secure and on the record.</h3><p style="margin: 8px 0 0; font-size: 15px; line-height: 1.7; color: #A39C91; max-width: 56ch">Two-step sign-in, an audit trail on every action, and evidence verified when it leaves.</p></div>
-</li>
-</ol>
-</section>
-
-<!-- Sign in -->
-<section id="signin" style="max-width: 1400px; margin: 0 auto; padding: 0 clamp(16px, 4vw, 56px) clamp(64px, 8vw, 112px)">
-<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 380px), 1fr)); gap: 16px">
-<a class="btn ease" href="https://core.armaturelegal.com" style="display: flex; justify-content: space-between; align-items: center; gap: 24px; padding: 28px 32px; border-radius: 22px; border: 1px solid rgba(236,231,223,.1); background: #141311; color: #ECE7DF">
-<span style="display: grid; gap: 6px"><span style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: 11px; letter-spacing: .14em; color: #A39C91">SIGN IN · INVITED USERS</span><span style="font-family: 'Instrument Serif', Georgia, serif; font-size: 26px">Armature Legal Suite Alpha Trial</span></span>
-<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"></path></svg>
-</a>
-<a class="btn ease" href="https://app.armaturelegal.com" style="display: flex; justify-content: space-between; align-items: center; gap: 24px; padding: 28px 32px; border-radius: 22px; border: 1px solid rgba(236,231,223,.1); background: #141311; color: #ECE7DF">
-<span style="display: grid; gap: 6px"><span style="font-family: 'Geist Mono', ui-monospace, monospace; font-size: 11px; letter-spacing: .14em; color: #A39C91">SIGN IN · INVITED USERS</span><span style="font-family: 'Instrument Serif', Georgia, serif; font-size: 26px">Armature Jury Instructions</span></span>
-<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"></path></svg>
-</a>
 </div>
-</section>
-
-<!-- Contact -->
-<section id="contact" style="border-top: 1px solid rgba(236,231,223,.08); background: radial-gradient(80% 120% at 85% 100%, #1F1C17 0%, #0E0D0C 60%)">
-<div style="max-width: 1400px; margin: 0 auto; padding: clamp(80px, 10vw, 160px) clamp(16px, 4vw, 56px); display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 440px), 1fr)); gap: 40px 96px; align-items: end">
-<div style="display: flex; flex-direction: column; gap: 22px">
-<p style="margin: 0; font-family: 'Geist Mono', ui-monospace, monospace; font-size: 12px; letter-spacing: .18em; text-transform: uppercase; color: var(--accent)">Contact</p>
-<h2 style="margin: 0; font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: clamp(44px, 5.4vw, 80px); line-height: .98; letter-spacing: -.02em">Built by a trial lawyer, <em style="color: var(--accent)">for trial lawyers.</em></h2>
-</div>
-<div style="display: flex; flex-direction: column; gap: 24px; align-items: flex-start">
-<p style="margin: 0; font-size: 17px; line-height: 1.7; color: #A39C91; max-width: 48ch">See Armature with your own workflow. We'll set up a short demo for your office or firm. Armature is in an invitation-only alpha.</p>
-<a class="btn ease" href="mailto:info@armaturelegal.com?subject=Armature%20demo" style="display: inline-flex; align-items: center; gap: 10px; min-height: 52px; padding: 0 26px; border-radius: 999px; background: var(--accent); color: #0E0D0C; font-weight: 500; font-size: 15px">Email info@armaturelegal.com
-<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
+<div>
+<p class="mono" style="margin:0 0 20px;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:#7E5226">The founder</p>
+<h2 style="margin:0;font-size:clamp(38px,4.2vw,62px);line-height:1;letter-spacing:-.04em;font-weight:500">Built by a trial lawyer, <span class="serif" style="font-weight:300;color:#7E5226">for trial lawyers.</span></h2>
+<p style="margin:32px 0 0;font-size:18px;line-height:1.65;color:#4F4B44;max-width:52ch">Stacy Weber has spent more than fifteen years in appellate litigation, felony trial work and legal technology leadership. Before law school she wrote software as a programmer at Boeing. Armature is the system she wanted at counsel table, designed by someone who has tried the cases and built the systems.</p>
 </div>
 </div>
 </section>
 
-<footer style="max-width: 1400px; margin: 0 auto; padding: 28px clamp(16px, 4vw, 56px) 40px; display: flex; flex-wrap: wrap; gap: 16px; justify-content: space-between; border-top: 1px solid rgba(236,231,223,.08); font-family: 'Geist Mono', ui-monospace, monospace; font-size: 12px; color: #A39C91">
-<span>© 2026 Armature Legal Technology, Inc.</span>
-<span>The structure a case is built on.</span>
+<!-- ============ CTA ============ -->
+<section id="contact" class="sec" style="position:relative;padding:160px 0 140px;background:#161512;color:#F3F0E8;overflow:hidden">
+<svg viewBox="0 0 32 32" fill="none" aria-hidden="true" style="position:absolute;right:-6%;top:-10%;width:640px;height:640px;opacity:.5"><path d="M6 28 L16 4 L26 28" stroke="#2D2A25" stroke-width=".25"></path><path d="M10.2 18 H21.8" stroke="#4A3D2C" stroke-width=".25"></path></svg>
+<div class="wrap" style="position:relative">
+<h2 style="margin:0;font-size:clamp(44px,6vw,92px);line-height:.95;letter-spacing:-.045em;font-weight:500;max-width:14ch">See it with <span class="serif" style="font-weight:300;color:#D9A973">your own workflow.</span></h2>
+<div class="two" style="margin-top:64px;align-items:end">
+<div style="display:flex;flex-wrap:wrap;gap:12px">
+<a class="btn btn-brass" href="mailto:info@armaturelegal.com?subject=Armature%20demo">Request a demo
+<svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
+</div>
+<p style="margin:0;font-size:16px;line-height:1.65;color:#A9A193;max-width:52ch">Armature is in an invitation-only alpha. We'll set up a short walkthrough for your office or firm. For partnership and investment conversations, write to <a href="mailto:info@armaturelegal.com?subject=Partnership%20and%20investment">info@armaturelegal.com</a>.</p>
+</div>
+</div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer id="signin" style="background:#161512;color:#8C8577;border-top:1px solid #2D2A25">
+<div class="wrap" style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:20px;padding-top:28px;padding-bottom:32px">
+<span style="font-size:13px">© 2026 Armature Legal Technology, Inc.</span>
+<span class="mono" style="display:flex;flex-wrap:wrap;gap:28px;font-size:11px;letter-spacing:.12em">
+<a href="https://core.armaturelegal.com" style="color:#A9A193;text-decoration:none">SIGN IN · LEGAL SUITE ALPHA</a>
+<a href="https://app.armaturelegal.com" style="color:#A9A193;text-decoration:none">SIGN IN · JURY INSTRUCTIONS</a>
+</span>
+</div>
 </footer>
+
 </div>
+<script>
+(function(){
+  var tabs=[].slice.call(document.querySelectorAll('.tab[data-tab]'));
+  var screens=[].slice.call(document.querySelectorAll('.screen[data-screen]'));
+  var cur=0, auto=!window.matchMedia('(prefers-reduced-motion: reduce)').matches, timer;
+  function show(i){
+    cur=i;
+    tabs.forEach(function(t,j){t.setAttribute('aria-pressed',j===i?'true':'false');t.classList.toggle('auto',auto);
+      var b=t.querySelector('.bar');b.style.animation='none';void b.offsetWidth;b.style.animation='';});
+    screens.forEach(function(s,j){s.hidden=j!==i;});
+  }
+  tabs.forEach(function(t,j){t.addEventListener('click',function(){auto=false;clearInterval(timer);show(j);});});
+  show(0);
+  if(auto){timer=setInterval(function(){show((cur+1)%tabs.length);},7000);}
+})();
+</script>
 </body>
 </html>
